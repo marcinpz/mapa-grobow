@@ -32,7 +32,21 @@ function initializeMap() {
     maxZoom: 19, maxNativeZoom: 19,
     attribution: 'Imagery © Esri, Maxar, Earthstar Geographics, GIS User Community'
   });
-  L.control.layers({'Mapa OpenStreetMap': streets, 'Zdjęcia lotnicze / satelitarne': aerial}, null, {collapsed: false}).addTo(map);
+  const layerToggle = byId('basemap-toggle');
+  let aerialActive = false;
+  layerToggle.addEventListener('click', () => {
+    aerialActive = !aerialActive;
+    if (aerialActive) {
+      map.removeLayer(streets);
+      aerial.addTo(map);
+    } else {
+      map.removeLayer(aerial);
+      streets.addTo(map);
+    }
+    layerToggle.textContent = aerialActive ? '🗺️ Mapa' : '🛰️ Zdjęcia';
+    layerToggle.setAttribute('aria-pressed', String(aerialActive));
+    layerToggle.title = aerialActive ? 'Przełącz na mapę OpenStreetMap' : 'Przełącz na zdjęcia lotnicze i satelitarne';
+  });
   for (const cemetery of dataset.cemeteries) {
     const gps = cemetery.coordinates;
     if (!validGps(gps)) continue;
