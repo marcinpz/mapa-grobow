@@ -48,7 +48,7 @@ with sync_playwright() as playwright:
         assert page.locator('#details h2').evaluate('(el) => el.getBoundingClientRect().top') < 844
         expect(page.locator('#details')).to_contain_text('Zdjęcie nagrobka czeka')
         expect(page.locator('#details a')).to_have_count(0)
-        search.fill('Anna')
+        search.fill('Anna Basisty')
         expect(page.locator('.grave')).to_have_count(1)
         page.locator('.grave button').click()
         expect(page.locator('#details')).to_contain_text('2018-11')
@@ -63,7 +63,7 @@ with sync_playwright() as playwright:
         search.fill('nieistniejace-nazwisko')
         expect(page.locator('#list')).to_contain_text('Brak wyników')
         search.fill('')
-        expect(page.locator('.grave')).to_have_count(5)
+        expect(page.locator('.grave')).to_have_count(11)
         assert page.evaluate('document.documentElement.scrollWidth <= innerWidth'), 'Horizontal overflow'
         assert page.locator('.grave button').first.bounding_box()['height'] >= 44
         assert not errors, errors
