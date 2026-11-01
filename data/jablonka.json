@@ -57,13 +57,13 @@
     },
     {
       "id": "grave-004",
-      "label": "Chruściek / Pilch",
+      "label": "Chrustek / Pilch",
       "location": {
         "description": "Cmentarz Jabłonka; dokładne położenie nieustalone",
         "coordinates": null
       },
       "personIds": [
-        "jozefina-chrusciek-1923",
+        "jozefina-chrustek-1923",
         "weronika-pilch"
       ],
       "photosPending": true
@@ -134,8 +134,8 @@
       "death": "2008-09-07"
     },
     {
-      "id": "jozefina-chrusciek-1923",
-      "name": "Józefina Chruściek",
+      "id": "jozefina-chrustek-1923",
+      "name": "Józefina Chrustek",
       "birth": "1923-01-02",
       "death": "2003-03-24"
     },
