@@ -154,9 +154,10 @@
     {
       "id": "weronika-pilch",
       "name": "Weronika Pilch",
-      "birth": null,
-      "death": null,
-      "notes": "Żona Andrzeja Pilcha seniora, matka Stefanii Zborek z domu Pilch. Daty na nagrobku częściowo zasłonięte."
+      "birth": "1887-01-19",
+      "death": "1946-11-02",
+      "notes": "Żona Andrzeja Pilcha seniora, matka siedmiorga dzieci. Data śmierci 2.11.1946 prawdopodobna; ostatnia cyfra roku na nagrobku ucięta, wymaga weryfikacji.",
+      "deathDateConfidence": "uncertain"
     },
     {
       "id": "antoni-zborek-1943",
@@ -353,10 +354,10 @@
     }
   ],
   "unresolved": [
-    "Daty Anny Basisty i Weroniki Pilch wymagają weryfikacji.",
     "Brak współrzędnych GPS wszystkich grobów.",
     "Daty życia i miejsca pochówku Józefa Pilcha (Jurgów) oraz Małgorzaty Środy (Kozy) nieustalone.",
-    "Daty Weroniki Pilch nadal niepodane; odpowiedź 'Weronika' wymaga doprecyzowania."
+    "Rok śmierci Weroniki Pilch: prawdopodobnie 1946, ostatnia cyfra ucięta na nagrobku.",
+    "Dokładne daty Anny Basisty wymagają weryfikacji."
   ],
   "provenance": "Zdjęcia nagrobków i relacje podane przez użytkownika w rozmowie 2026-11-01. Zdjęcia nie zostały jeszcze przesłane do repozytorium."
 }
