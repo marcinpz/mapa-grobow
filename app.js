@@ -4,6 +4,10 @@ let cemeteryFilter = 'all';
 const cemeteryMarkers = new Map();
 const cemeteryCenters = new Map();
 let map;
+let selectedGrave = null;
+let editMode = false;
+let draftMarker = null;
+let draftCoordinates = null;
 const markers = new Map();
 const byId = id => document.getElementById(id);
 const normalize = value => String(value ?? '').toLocaleLowerCase('pl').normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/ł/g, 'l').trim();
@@ -39,6 +43,19 @@ function initializeMap() {
     cemeteryMarkers.set(cemetery.id, marker);
   }
   updateMapForFilter();
+  map.on('click', event => {
+    if (!editMode || !selectedGrave) return;
+    const gps = {lat: Number(event.latlng.lat.toFixed(7)), lon: Number(event.latlng.lng.toFixed(7))};
+    draftCoordinates = gps;
+    if (draftMarker) draftMarker.setLatLng([gps.lat, gps.lon]);
+    else draftMarker = L.marker([gps.lat, gps.lon], {draggable: true}).addTo(map);
+    draftMarker.off('dragend').on('dragend', () => {
+      const point = draftMarker.getLatLng();
+      draftCoordinates = {lat: Number(point.lat.toFixed(7)), lon: Number(point.lng.toFixed(7))};
+      renderDraft();
+    });
+    renderDraft();
+  });
   dataset.graves.forEach(grave => {
     const gps = grave.location?.coordinates;
     if (!validGps(gps)) return;
@@ -58,7 +75,46 @@ function updateMapForFilter() {
     map.fitBounds([...cemeteryCenters.values()], {padding: [25, 25]});
   }
 }
+function stopEditing() {
+  editMode = false;
+  draftCoordinates = null;
+  if (draftMarker && map) map.removeLayer(draftMarker);
+  draftMarker = null;
+  const panel = byId('location-editor');
+  if (panel) panel.hidden = true;
+  if (map) map.getContainer().style.cursor = '';
+}
+function renderDraft() {
+  const status = byId('draft-coordinates');
+  if (!status) return;
+  status.textContent = draftCoordinates
+    ? 'Wybrany punkt: ' + draftCoordinates.lat + ', ' + draftCoordinates.lon + ' (przeciągnij pinezkę, aby poprawić)'
+    : 'Dotknij mapy w miejscu grobu. Możesz potem przeciągnąć pinezkę.';
+  byId('copy-coordinates').disabled = !draftCoordinates;
+}
+function startEditing() {
+  if (!map || !selectedGrave) return;
+  stopEditing();
+  editMode = true;
+  byId('location-editor').hidden = false;
+  map.getContainer().style.cursor = 'crosshair';
+  const previous = selectedGrave.location?.coordinates;
+  if (validGps(previous)) {
+    draftCoordinates = {...previous};
+    draftMarker = L.marker([previous.lat, previous.lon], {draggable: true}).addTo(map);
+    draftMarker.on('dragend', () => {
+      const point = draftMarker.getLatLng();
+      draftCoordinates = {lat: Number(point.lat.toFixed(7)), lon: Number(point.lng.toFixed(7))};
+      renderDraft();
+    });
+  }
+  renderDraft();
+  map.invalidateSize();
+  byId('map').scrollIntoView({block: 'center', behavior: 'smooth'});
+}
 function show(grave, moveFocus = false) {
+  if (selectedGrave?.id !== grave.id) stopEditing();
+  selectedGrave = grave;
   const details = byId('details');
   const heading = element('h2', grave.label);
   heading.tabIndex = -1;
@@ -94,6 +150,10 @@ function show(grave, moveFocus = false) {
     details.append(element('p', 'Dokładne współrzędne grobu nieustalone. Znacznik na mapie wskazuje tylko cmentarz.', 'muted'));
     if (map && cemeteryCenters.has(grave.cemeteryId)) map.setView(cemeteryCenters.get(grave.cemeteryId), 18);
   }
+  const editButton = element('button', 'Zaznacz położenie grobu');
+  editButton.type = 'button';
+  editButton.onclick = startEditing;
+  details.append(element('p', 'Położenie możesz ustalić na zdjęciu lotniczym i skopiować do pliku danych.', 'muted'), editButton);
   if (moveFocus) {
     heading.focus({preventScroll: true});
     details.scrollIntoView({block: 'start'});
@@ -143,6 +203,7 @@ Promise.all(['jablonka', 'orawka'].map(async id => {
     filter.append(option);
   }
   filter.addEventListener('change', event => {
+    stopEditing();
     cemeteryFilter = event.target.value;
     render(byId('search').value);
     updateMapForFilter();
@@ -152,3 +213,24 @@ Promise.all(['jablonka', 'orawka'].map(async id => {
   if (dataset.graves.length) show(dataset.graves[0]);
 }).catch(error => { byId('list').textContent = error.message; });
 byId('search').addEventListener('input', event => { if (dataset) render(event.target.value); });
+
+byId('cancel-location').addEventListener('click', stopEditing);
+byId('copy-coordinates').addEventListener('click', async () => {
+  if (!selectedGrave || !draftCoordinates) return;
+  const data = JSON.stringify({
+    cemetery: selectedGrave.cemeteryId,
+    graveId: selectedGrave.id,
+    coordinates: draftCoordinates,
+    precision: 'estimated-from-imagery'
+  }, null, 2);
+  const output = byId('location-json');
+  output.value = data;
+  output.hidden = false;
+  output.select();
+  try {
+    await navigator.clipboard.writeText(data);
+    byId('copy-status').textContent = 'Skopiowano. Współrzędne nie zostały jeszcze zapisane w repozytorium.';
+  } catch (_) {
+    byId('copy-status').textContent = 'Zaznaczony tekst skopiuj ręcznie. Współrzędne nie zostały jeszcze zapisane.';
+  }
+});
