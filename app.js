@@ -1,5 +1,6 @@
 'use strict';
 let dataset;
+let cemeteryFilter = 'all';
 let map;
 const markers = new Map();
 const byId = id => document.getElementById(id);
@@ -32,7 +33,7 @@ function show(grave, moveFocus = false) {
   const details = byId('details');
   const heading = element('h2', grave.label);
   heading.tabIndex = -1;
-  details.replaceChildren(heading, element('p', grave.location?.description || ''));
+  details.replaceChildren(heading, element('p', grave.cemeteryName + ' · ' + (grave.location?.description || '')));
   for (const person of peopleFor(grave)) {
     const row = element('div', undefined, 'person');
     row.append(element('strong', person.name), document.createTextNode(' · ' + (person.birth || '?') + (person.birthDateConfidence === 'uncertain' ? ' (data niepewna)' : '') + ' – ' + (person.death || '?')));
@@ -69,7 +70,8 @@ function show(grave, moveFocus = false) {
 function render(query = '') {
   const words = normalize(query).split(/\s+/).filter(Boolean);
   const filtered = dataset.graves.filter(grave => {
-    const text = normalize([grave.label, grave.location?.description, ...peopleFor(grave).flatMap(person => [person.name, person.birthSurname]), dataset.cemetery.name, dataset.cemetery.locality].join(' '));
+    if (cemeteryFilter !== 'all' && grave.cemeteryId !== cemeteryFilter) return false;
+    const text = normalize([grave.label, grave.location?.description, ...peopleFor(grave).flatMap(person => [person.name, person.birthSurname]), grave.cemeteryName, grave.cemeteryLocality].join(' '));
     return words.every(word => text.includes(word));
   });
   byId('result-count').textContent = 'Znaleziono grobów: ' + filtered.length;
@@ -81,21 +83,38 @@ function render(query = '') {
     button.type = 'button';
     button.setAttribute('aria-label', 'Zobacz szczegóły: ' + grave.label);
     button.onclick = () => show(grave, true);
-    card.append(element('h3', grave.label), element('p', peopleFor(grave).map(person => person.name).join(' · ')), button);
+    card.append(element('h3', grave.label), element('p', grave.cemeteryName), element('p', peopleFor(grave).map(person => person.name).join(' · ')), button);
     list.append(card);
   }
   if (!filtered.length) list.append(element('p', 'Brak wyników. Zmień wyszukiwanie.'));
   const visible = new Set(filtered.map(grave => grave.id));
   if (map) markers.forEach((marker, id) => visible.has(id) ? marker.addTo(map) : map.removeLayer(marker));
 }
-fetch('./data/jablonka.json').then(response => {
-  if (!response.ok) throw Error('Nie udało się pobrać danych. Odśwież stronę, aby spróbować ponownie.');
-  return response.json();
-}).then(data => {
-  dataset = data;
+Promise.all(['jablonka', 'orawka'].map(async id => {
+  const response = await fetch('./data/' + id + '.json');
+  if (!response.ok) throw Error('Nie udało się pobrać danych cmentarza: ' + id);
+  const data = await response.json();
+  return data;
+})).then(cemeteries => {
+  dataset = {
+    people: cemeteries.flatMap(c => c.people),
+    graves: cemeteries.flatMap(c => c.graves.map(g => ({
+      ...g, cemeteryId: c.cemetery.id, cemeteryName: c.cemetery.name,
+      cemeteryLocality: c.cemetery.locality
+    })))
+  };
+  const filter = byId('cemetery-filter');
+  for (const c of cemeteries) {
+    const option = element('option', c.cemetery.name);
+    option.value = c.cemetery.id;
+    filter.append(option);
+  }
+  filter.addEventListener('change', event => {
+    cemeteryFilter = event.target.value;
+    render(byId('search').value);
+  });
   initializeMap();
   render(byId('search').value);
-  if (data.graves.length) show(data.graves[0]);
+  if (dataset.graves.length) show(dataset.graves[0]);
 }).catch(error => { byId('list').textContent = error.message; });
 byId('search').addEventListener('input', event => { if (dataset) render(event.target.value); });
-
