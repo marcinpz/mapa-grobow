@@ -19,6 +19,19 @@
       ],
       "photosPending": true,
       "photoNotes": "Dwa zdjęcia nagrobka przekazane w rozmowie 2026-11-01."
+    },
+    {
+      "id": "orawka-grave-003",
+      "label": "Kazimierz Zborowski",
+      "location": {
+        "description": "Cmentarz w Orawce, przy alejce z kamiennych płyt; szary falowany nagrobek, w tle grób Joanny Kadłubek, obok krzyż Marii Szklarz",
+        "coordinates": null
+      },
+      "personIds": [
+        "kazimierz-zborowski-1961"
+      ],
+      "photosPending": true,
+      "photoNotes": "Dwa zdjęcia przesłane 2026-11-01"
     }
   ],
   "people": [
@@ -44,6 +57,21 @@
       "death": null,
       "privacy": "private",
       "notes": "Mama użytkownika; siostra Anieli Polaczek. Nazwisko nieustalone."
+    },
+    {
+      "id": "kazimierz-zborowski-1961",
+      "name": "Kazimierz Zborowski",
+      "birth": "1961-01-13",
+      "death": "2014-01-10",
+      "notes": "Mąż Bożeny, siostry Danuty, mamy użytkownika."
+    },
+    {
+      "id": "bozena-zborowska",
+      "name": "Bożena Zborowska",
+      "privacy": "private",
+      "birth": null,
+      "death": null,
+      "notes": "Siostra Danuty i Anieli; żona Kazimierza Zborowskiego. Status życia nieustalony."
     }
   ],
   "relationships": [
@@ -57,6 +85,24 @@
       "type": "sibling",
       "a": "aniela-polaczek",
       "b": "danuta-mama",
+      "source": "user"
+    },
+    {
+      "type": "spouse",
+      "a": "kazimierz-zborowski-1961",
+      "b": "bozena-zborowska",
+      "source": "user"
+    },
+    {
+      "type": "sibling",
+      "a": "bozena-zborowska",
+      "b": "danuta-mama",
+      "source": "user"
+    },
+    {
+      "type": "sibling",
+      "a": "bozena-zborowska",
+      "b": "aniela-polaczek",
       "source": "user"
     }
   ],
