@@ -43,3 +43,9 @@ Projekt ma dwa niezależne repozytoria:
 | `marcinpz/rodzina-genealogia` | **Prywatny** | Drzewo rodzinne, relacje, osoby żyjące, historie rodzinne i materiały prywatne |
 
 **Reguła przepływu:** prywatne repo może odwoływać się do publicznych identyfikatorów grobów i osób; publiczne repo **nigdy** nie pobiera ani nie publikuje prywatnych danych. Repo prywatne nie jest submodułem ani zależnością aplikacji Pages. Szczegółowe instrukcje dla agentów: [AGENTS.md](AGENTS.md).
+
+## Zaznaczanie położenia grobu
+
+Otwórz szczegóły grobu i wybierz **Zaznacz położenie grobu**. Włącz zdjęcia lotnicze w przełączniku warstw, kliknij/dotknij właściwe miejsce, w razie potrzeby przeciągnij tymczasową pinezkę, a następnie kliknij **Kopiuj współrzędne**. Aplikacja przygotuje JSON z `cemetery`, `graveId`, `coordinates` i `precision: estimated-from-imagery`.
+
+**Ważne:** publiczna aplikacja nie ma prawa zapisu na GitHubie. Kopiowanie nie aktualizuje repozytorium. Zweryfikowane współrzędne trzeba ręcznie przenieść do pola `location.coordinates` odpowiedniego grobu w `data/jablonka.json` lub `data/orawka.json` i zatwierdzić commit. Nie dodawaj tokenów GitHub do kodu strony. Punkty wybrane na ortofotomapie są orientacyjne i nie powinny być oznaczane jako pomiary GPS.
