@@ -45,6 +45,20 @@
       ],
       "photosPending": true,
       "photoNotes": "Dwa zdjęcia przesłane 2026-11-01."
+    },
+    {
+      "id": "orawka-grave-005",
+      "label": "Władysław i Joanna Otrębiak",
+      "location": {
+        "description": "Cmentarz w Orawce; wspólny ciemny nagrobek z krzyżem pośrodku, dwa portrety; położenie dokładne nieustalone",
+        "coordinates": null
+      },
+      "personIds": [
+        "wladyslaw-otrebiak-1939",
+        "joanna-otrebiak-1935"
+      ],
+      "photosPending": true,
+      "photoNotes": "Trzy zdjęcia przekazane w rozmowie 2026-11-01."
     }
   ],
   "people": [
@@ -68,8 +82,31 @@
       "birth": "1965-10-07",
       "death": "1993-11-21",
       "notes": "Brat Bożeny, Anieli i Danuty (informacja rodzinna); dane żyjących krewnych przechowywać poza publicznym repozytorium."
+    },
+    {
+      "id": "wladyslaw-otrebiak-1939",
+      "name": "Władysław Otrębiak",
+      "birth": "1939-10-05",
+      "death": "2007-12-02",
+      "dateConfidence": "to-verify",
+      "notes": "Dziadek użytkownika od strony matki."
+    },
+    {
+      "id": "joanna-otrebiak-1935",
+      "name": "Joanna Otrębiak",
+      "birth": "1935-09-05",
+      "death": "2003-04-10",
+      "dateConfidence": "to-verify",
+      "notes": "Babcia użytkownika od strony matki."
     }
   ],
-  "relationships": [],
+  "relationships": [
+    {
+      "type": "spouse",
+      "a": "wladyslaw-otrebiak-1939",
+      "b": "joanna-otrebiak-1935",
+      "source": "user"
+    }
+  ],
   "provenance": "Zdjęcia i informacja rodzinna użytkownika z 2026-11-01. Fotografie nie zostały jeszcze dodane do repozytorium."
 }
