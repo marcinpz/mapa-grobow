@@ -133,9 +133,11 @@
       "id": "anna-basisty-1925",
       "name": "Anna Basisty",
       "birth": "1925-06-13",
-      "birthDateConfidence": "uncertain",
-      "death": "2018",
-      "birthSurname": "Pilch"
+      "birthDateConfidence": "confirmed",
+      "death": "2018-11",
+      "birthSurname": "Pilch",
+      "deathDatePrecision": "month",
+      "notes": "Dzień śmierci w listopadzie 2018 nieczytelny (ucięty na nagrobku)."
     },
     {
       "id": "karol-basisty-1926",
@@ -357,7 +359,7 @@
     "Brak współrzędnych GPS wszystkich grobów.",
     "Daty życia i miejsca pochówku Józefa Pilcha (Jurgów) oraz Małgorzaty Środy (Kozy) nieustalone.",
     "Rok śmierci Weroniki Pilch: prawdopodobnie 1946, ostatnia cyfra ucięta na nagrobku.",
-    "Dokładne daty Anny Basisty wymagają weryfikacji."
+    "Dzień śmierci Anny Basisty w listopadzie 2018 nieczytelny na nagrobku."
   ],
   "provenance": "Zdjęcia nagrobków i relacje podane przez użytkownika w rozmowie 2026-11-01. Zdjęcia nie zostały jeszcze przesłane do repozytorium."
 }
