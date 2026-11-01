@@ -18,9 +18,28 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Validate public data and build approved assets
+        run: python3 scripts/build.py
+      - name: Install mobile browser checks
+        run: |
+          python3 -m pip install playwright==1.56.0
+          python3 -m playwright install --with-deps chromium
+      - name: Check mobile map, search and cards
+        run: python3 scripts/mobile_smoke.py
+      - name: Save mobile screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: mobile-checks
+          path: test-results/
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: .
+          path: _site
       - id: deployment
         uses: actions/deploy-pages@v4
+      - name: Verify deployed site on mobile
+        env:
+          SITE_URL: ${{ steps.deployment.outputs.page_url }}
+        run: python3 scripts/mobile_smoke.py --url "$SITE_URL"
+

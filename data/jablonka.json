@@ -21,7 +21,8 @@
       "adjacentGraveIds": [
         "grave-002"
       ],
-      "photosPending": true
+      "photosPending": true,
+      "photos": []
     },
     {
       "id": "grave-002",
@@ -39,7 +40,8 @@
       "adjacentGraveIds": [
         "grave-001"
       ],
-      "photosPending": true
+      "photosPending": true,
+      "photos": []
     },
     {
       "id": "grave-003",
@@ -53,7 +55,8 @@
         "karol-basisty-1926"
       ],
       "otherInscription": "Andrzej Pilch — napis bez widocznych dat, tożsamość i charakter upamiętnienia do ustalenia",
-      "photosPending": true
+      "photosPending": true,
+      "photos": []
     },
     {
       "id": "grave-004",
@@ -66,7 +69,8 @@
         "jozefina-chrustek-1923",
         "weronika-pilch"
       ],
-      "photosPending": true
+      "photosPending": true,
+      "photos": []
     },
     {
       "id": "grave-005",
@@ -78,7 +82,8 @@
       "personIds": [
         "antoni-zborek-1943"
       ],
-      "photosPending": true
+      "photosPending": true,
+      "photos": []
     }
   ],
   "people": [
@@ -212,3 +217,4 @@
   ],
   "provenance": "Zdjęcia nagrobków i relacje podane przez użytkownika w rozmowie 2026-11-01. Zdjęcia nie zostały jeszcze przesłane do repozytorium."
 }
+

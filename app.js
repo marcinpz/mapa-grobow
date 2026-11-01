@@ -1,6 +1,101 @@
-let dataset;let markers=[];const map=L.map('map').setView([49.48,19.69],13);L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'© OpenStreetMap contributors'}).addTo(map);
-const escapeHtml=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const peopleFor=g=>g.personIds.map(id=>dataset.people.find(p=>p.id===id)).filter(Boolean);
-function show(g){const p=peopleFor(g);const photos=(g.photos||[]).map(src=>'<img class="photo" alt="Zdjęcie grobu" loading="lazy" src="'+encodeURI(src)+'">').join('');const gps=g.location?.coordinates;document.getElementById('details').innerHTML='<h2>'+escapeHtml(g.label)+'</h2><p>'+escapeHtml(g.location?.description||'')+'</p>'+p.map(x=>'<div class="person"><strong>'+escapeHtml(x.name)+'</strong> · '+escapeHtml(x.birth||'?')+' – '+escapeHtml(x.death||'?')+'</div>').join('')+photos+(gps?'<p><a target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&destination='+encodeURIComponent(gps.lat+','+gps.lon)+'">Nawiguj do grobu</a></p>':'<p class="muted">Dokładne współrzędne GPS jeszcze nieustalone.</p>');if(gps)map.setView([gps.lat,gps.lon],18)}
-function render(q=''){const list=document.getElementById('list');const filtered=dataset.graves.filter(g=>(g.label+' '+peopleFor(g).map(p=>p.name).join(' ')+' '+dataset.cemetery.name).toLocaleLowerCase('pl').includes(q.toLocaleLowerCase('pl')));list.replaceChildren();filtered.forEach(g=>{const card=document.createElement('article');card.className='grave';const title=document.createElement('h3');title.textContent=g.label;card.append(title);const desc=document.createElement('p');desc.textContent=peopleFor(g).map(p=>p.name).join(' · ');card.append(desc);const button=document.createElement('button');button.textContent='Zobacz szczegóły';button.onclick=()=>show(g);card.append(button);list.append(card)});if(!filtered.length)list.textContent='Brak wyników.'}
-fetch('./data/jablonka.json').then(r=>{if(!r.ok)throw Error('Nie udało się pobrać danych');return r.json()}).then(d=>{dataset=d;render();d.graves.forEach(g=>{const c=g.location?.coordinates;if(c&&Number.isFinite(c.lat)&&Number.isFinite(c.lon))L.marker([c.lat,c.lon]).addTo(map).bindPopup(escapeHtml(g.label)).on('click',()=>show(g))});if(d.graves.length)show(d.graves[0])}).catch(e=>{document.getElementById('list').textContent=e.message});document.getElementById('search').addEventListener('input',e=>{if(dataset)render(e.target.value)});
+'use strict';
+let dataset;
+let map;
+const markers = new Map();
+const byId = id => document.getElementById(id);
+const normalize = value => String(value ?? '').toLocaleLowerCase('pl').normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/ł/g, 'l').trim();
+const peopleFor = grave => grave.personIds.map(id => dataset.people.find(person => person.id === id)).filter(Boolean);
+const validGps = value => value && Number.isFinite(value.lat) && Number.isFinite(value.lon) && Math.abs(value.lat) <= 90 && Math.abs(value.lon) <= 180;
+function element(tag, text, className) {
+  const node = document.createElement(tag);
+  if (text !== undefined) node.textContent = text;
+  if (className) node.className = className;
+  return node;
+}
+function initializeMap() {
+  if (!window.L) {
+    byId('map').textContent = 'Mapa jest niedostępna. Lista i karty grobów nadal działają.';
+    return;
+  }
+  map = L.map('map').setView([49.48, 19.69], 13);
+  L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19, attribution: '© OpenStreetMap contributors'
+  }).addTo(map);
+  dataset.graves.forEach(grave => {
+    const gps = grave.location?.coordinates;
+    if (!validGps(gps)) return;
+    const marker = L.marker([gps.lat, gps.lon]).bindPopup(element('span', grave.label)).on('click', () => show(grave, true));
+    markers.set(grave.id, marker);
+  });
+}
+function show(grave, moveFocus = false) {
+  const details = byId('details');
+  const heading = element('h2', grave.label);
+  heading.tabIndex = -1;
+  details.replaceChildren(heading, element('p', grave.location?.description || ''));
+  for (const person of peopleFor(grave)) {
+    const row = element('div', undefined, 'person');
+    row.append(element('strong', person.name), document.createTextNode(' · ' + (person.birth || '?') + (person.birthDateConfidence === 'uncertain' ? ' (data niepewna)' : '') + ' – ' + (person.death || '?')));
+    details.append(row);
+  }
+  if (grave.otherInscription) details.append(element('p', grave.otherInscription, 'muted'));
+  const photos = grave.photos || [];
+  if (!photos.length) details.append(element('p', 'Zdjęcie nagrobka czeka na dodanie.', 'muted'));
+  for (const source of photos) {
+    if (!/^photos\/[a-zA-Z0-9/_-]+\.(jpe?g|png|webp)$/i.test(source) || source.includes('..')) continue;
+    const photo = element('img', undefined, 'photo');
+    photo.alt = 'Nagrobek: ' + grave.label;
+    photo.loading = 'lazy';
+    photo.src = source;
+    photo.addEventListener('error', () => photo.replaceWith(element('p', 'Nie udało się wczytać zdjęcia.', 'muted')));
+    details.append(photo);
+  }
+  const gps = grave.location?.coordinates;
+  if (validGps(gps)) {
+    const link = element('a', 'Nawiguj do grobu');
+    link.href = 'https://www.google.com/maps/dir/?api=1&destination=' + encodeURIComponent(gps.lat + ',' + gps.lon);
+    link.target = '_blank';
+    link.rel = 'noopener';
+    const paragraph = element('p');
+    paragraph.append(link);
+    details.append(paragraph);
+    if (map) map.setView([gps.lat, gps.lon], 18);
+  } else details.append(element('p', 'Dokładne współrzędne GPS jeszcze nieustalone.', 'muted'));
+  if (moveFocus) {
+    heading.focus({preventScroll: true});
+    details.scrollIntoView({block: 'start'});
+  }
+}
+function render(query = '') {
+  const words = normalize(query).split(/\s+/).filter(Boolean);
+  const filtered = dataset.graves.filter(grave => {
+    const text = normalize([grave.label, grave.location?.description, ...peopleFor(grave).flatMap(person => [person.name, person.birthSurname]), dataset.cemetery.name, dataset.cemetery.locality].join(' '));
+    return words.every(word => text.includes(word));
+  });
+  byId('result-count').textContent = 'Znaleziono grobów: ' + filtered.length;
+  const list = byId('list');
+  list.replaceChildren();
+  for (const grave of filtered) {
+    const card = element('article', undefined, 'grave');
+    const button = element('button', 'Zobacz szczegóły');
+    button.type = 'button';
+    button.setAttribute('aria-label', 'Zobacz szczegóły: ' + grave.label);
+    button.onclick = () => show(grave, true);
+    card.append(element('h3', grave.label), element('p', peopleFor(grave).map(person => person.name).join(' · ')), button);
+    list.append(card);
+  }
+  if (!filtered.length) list.append(element('p', 'Brak wyników. Zmień wyszukiwanie.'));
+  const visible = new Set(filtered.map(grave => grave.id));
+  if (map) markers.forEach((marker, id) => visible.has(id) ? marker.addTo(map) : map.removeLayer(marker));
+}
+fetch('./data/jablonka.json').then(response => {
+  if (!response.ok) throw Error('Nie udało się pobrać danych. Odśwież stronę, aby spróbować ponownie.');
+  return response.json();
+}).then(data => {
+  dataset = data;
+  initializeMap();
+  render(byId('search').value);
+  if (data.graves.length) show(data.graves[0]);
+}).catch(error => { byId('list').textContent = error.message; });
+byId('search').addEventListener('input', event => { if (dataset) render(event.target.value); });
+
