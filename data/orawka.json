@@ -62,13 +62,13 @@
     },
     {
       "id": "orawka-grave-006",
-      "label": "Arkadiusz Aniołak",
+      "label": "Arkadiusz Antolak",
       "location": {
         "description": "Cmentarz w Orawce; jasny nagrobek z krzyżem, bezpośrednio przed grobem Władysława i Joanny Otrębiaków",
         "coordinates": null
       },
       "personIds": [
-        "arkadiusz-aniolak-1996"
+        "arkadiusz-antolak-1996"
       ],
       "photosPending": true,
       "photoNotes": "Dwa zdjęcia przekazane 2026-11-01; pliki nie są jeszcze w repozytorium."
@@ -113,11 +113,11 @@
       "notes": "Babcia użytkownika od strony matki."
     },
     {
-      "id": "arkadiusz-aniolak-1996",
-      "name": "Arkadiusz Aniołak",
+      "id": "arkadiusz-antolak-1996",
+      "name": "Arkadiusz Antolak",
       "birth": "1996-09-20",
       "death": "2005-10-06",
-      "notes": "Kuzyn użytkownika, syn Aliny z domu Otrębiak. Powiązanie Aliny z Władysławem i Joanną wymaga potwierdzenia."
+      "notes": "Pochowany w Orawce. Nazwisko skorygowane na podstawie informacji rodziny."
     }
   ],
   "relationships": [
