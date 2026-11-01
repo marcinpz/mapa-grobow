@@ -144,13 +144,20 @@
       "name": "Weronika Pilch",
       "birth": null,
       "death": null,
-      "notes": "Daty częściowo zasłonięte; możliwa matka rodzeństwa Pilch — niepotwierdzone"
+      "notes": "Żona Andrzeja Pilcha seniora, matka Stefanii Zborek z domu Pilch. Daty na nagrobku częściowo zasłonięte."
     },
     {
       "id": "antoni-zborek-1943",
       "name": "Antoni Zborek",
       "birth": "1943-01-16",
       "death": "2019-03-05"
+    },
+    {
+      "id": "andrzej-pilch-senior",
+      "name": "Andrzej Pilch",
+      "birth": null,
+      "death": null,
+      "notes": "Ojciec Stefanii Zborek z domu Pilch; inna osoba niż Andrzej Pilch (1912–1981). Grób nieustalony."
     }
   ],
   "relationships": [
@@ -177,14 +184,31 @@
       "a": "anna-basisty-1925",
       "b": "karol-basisty-1926",
       "source": "user"
+    },
+    {
+      "type": "parent",
+      "parent": "weronika-pilch",
+      "child": "stefania-zborek-1920",
+      "source": "user"
+    },
+    {
+      "type": "spouse",
+      "a": "weronika-pilch",
+      "b": "andrzej-pilch-senior",
+      "source": "user"
+    },
+    {
+      "type": "parent",
+      "parent": "andrzej-pilch-senior",
+      "child": "stefania-zborek-1920",
+      "source": "user"
     }
   ],
   "unresolved": [
-    "Andrzej Pilch senior, ojciec Stefanii, Anny i Andrzeja juniora: brak dat i jednoznacznego przypisania do grobu.",
-    "Czy Weronika Pilch była ich matką, a Józefina Chruściek siostrą?",
     "Napis Andrzej Pilch na grobie 003 wymaga identyfikacji.",
     "Daty Anny Basisty i Weroniki Pilch wymagają weryfikacji.",
-    "Brak współrzędnych GPS wszystkich grobów."
+    "Brak współrzędnych GPS wszystkich grobów.",
+    "Relacja Weroniki Pilch z pozostałymi dziećmi Andrzeja Pilcha seniora wymaga osobnego potwierdzenia."
   ],
   "provenance": "Zdjęcia nagrobków i relacje podane przez użytkownika w rozmowie 2026-11-01. Zdjęcia nie zostały jeszcze przesłane do repozytorium."
 }
