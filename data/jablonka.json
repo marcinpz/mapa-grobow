@@ -52,11 +52,13 @@
       },
       "personIds": [
         "anna-basisty-1925",
-        "karol-basisty-1926"
+        "karol-basisty-1926",
+        "andrzej-pilch-senior"
       ],
       "otherInscription": "Andrzej Pilch — napis bez widocznych dat, tożsamość i charakter upamiętnienia do ustalenia",
       "photosPending": true,
-      "photos": []
+      "photos": [],
+      "notes": "Potwierdzone przez rodzinę: Andrzej Pilch senior pochowany razem z Anną Basisty."
     },
     {
       "id": "grave-004",
@@ -160,14 +162,15 @@
       "id": "antoni-zborek-1943",
       "name": "Antoni Zborek",
       "birth": "1943-01-16",
-      "death": "2019-03-05"
+      "death": "2019-03-05",
+      "notes": "Mąż Józefiny, siostry Antoniego Zborka (ojca użytkownika). Nie utożsamiać z ojcem użytkownika."
     },
     {
       "id": "andrzej-pilch-senior",
       "name": "Andrzej Pilch",
       "birth": null,
       "death": null,
-      "notes": "Ojciec Stefanii Zborek z domu Pilch; inna osoba niż Andrzej Pilch (1912–1981). Grób nieustalony."
+      "notes": "Ojciec Stefanii Zborek z domu Pilch; pochowany w grobie 003 razem z Anną Basisty. Inna osoba niż Andrzej Pilch (1912–1981)."
     },
     {
       "id": "jozef-pilch",
@@ -350,10 +353,10 @@
     }
   ],
   "unresolved": [
-    "Napis Andrzej Pilch na grobie 003 wymaga identyfikacji.",
     "Daty Anny Basisty i Weroniki Pilch wymagają weryfikacji.",
     "Brak współrzędnych GPS wszystkich grobów.",
-    "Daty życia i miejsca pochówku Józefa Pilcha (Jurgów) oraz Małgorzaty Środy (Kozy) nieustalone."
+    "Daty życia i miejsca pochówku Józefa Pilcha (Jurgów) oraz Małgorzaty Środy (Kozy) nieustalone.",
+    "Daty Weroniki Pilch nadal niepodane; odpowiedź 'Weronika' wymaga doprecyzowania."
   ],
   "provenance": "Zdjęcia nagrobków i relacje podane przez użytkownika w rozmowie 2026-11-01. Zdjęcia nie zostały jeszcze przesłane do repozytorium."
 }
