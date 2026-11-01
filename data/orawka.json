@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "cemetery": {
+    "id": "orawka",
+    "name": "Cmentarz w Orawce",
+    "locality": "Orawka",
+    "country": "PL"
+  },
+  "graves": [
+    {
+      "id": "orawka-grave-001",
+      "label": "Stanisław Polaczek",
+      "location": {
+        "description": "Cmentarz w Orawce; grób przy drzewach i dużym pniu, dokładna lokalizacja nieustalona",
+        "coordinates": null
+      },
+      "personIds": [
+        "stanislaw-polaczek-1958"
+      ],
+      "photosPending": true,
+      "photoNotes": "Dwa zdjęcia nagrobka przekazane w rozmowie 2026-11-01."
+    }
+  ],
+  "people": [
+    {
+      "id": "stanislaw-polaczek-1958",
+      "name": "Stanisław Polaczek",
+      "birth": "1958-02-21",
+      "death": "1997-11-11",
+      "notes": "Wujek użytkownika; dokładny stopień pokrewieństwa do ustalenia. Daty odczytane z nagrobka."
+    }
+  ],
+  "relationships": [],
+  "provenance": "Zdjęcia i informacja rodzinna użytkownika z 2026-11-01. Fotografie nie zostały jeszcze dodane do repozytorium."
+}
