@@ -28,7 +28,7 @@ with sync_playwright() as playwright:
             page.route('https://unpkg.com/**', lambda route: route.abort())
         response = page.goto(url, wait_until='networkidle')
         assert response.status == 200, response.status
-        expect(page.locator('.grave')).to_have_count(5)
+        expect(page.locator('.grave')).to_have_count(11)
         if args.offline_map:
             expect(page.locator('#map')).to_contain_text('Mapa jest niedostępna')
         else:
@@ -51,8 +51,15 @@ with sync_playwright() as playwright:
         search.fill('Anna')
         expect(page.locator('.grave')).to_have_count(1)
         page.locator('.grave button').click()
-        expect(page.locator('#details')).to_contain_text('data niepewna')
-        expect(page.locator('#details')).to_contain_text('Andrzej Pilch — napis')
+        expect(page.locator('#details')).to_contain_text('2018-11')
+        expect(page.locator('#details')).to_contain_text('Andrzej Pilch')
+        search.fill('Arkadiusz Antolak')
+        expect(page.locator('.grave')).to_have_count(1)
+        page.locator('#cemetery-filter').select_option('jablonka')
+        expect(page.locator('.grave')).to_have_count(0)
+        page.locator('#cemetery-filter').select_option('orawka')
+        expect(page.locator('.grave')).to_have_count(1)
+        page.locator('#cemetery-filter').select_option('all')
         search.fill('nieistniejace-nazwisko')
         expect(page.locator('#list')).to_contain_text('Brak wyników')
         search.fill('')
