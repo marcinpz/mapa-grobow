@@ -4,7 +4,13 @@
     "id": "orawka",
     "name": "Cmentarz w Orawce",
     "locality": "Orawka",
-    "country": "PL"
+    "country": "PL",
+    "coordinates": {
+      "lat": 49.51083,
+      "lon": 19.71755
+    },
+    "coordinateSource": "https://mapcarta.com/W328207183",
+    "coordinatePrecision": "approximate-cemetery-center"
   },
   "graves": [
     {
