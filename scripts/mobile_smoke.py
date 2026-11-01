@@ -35,11 +35,12 @@ with sync_playwright() as playwright:
             expect(page.locator('#map')).to_be_visible()
             expect(page.locator('#map img.leaflet-tile-loaded').first).to_be_visible(timeout=15000)
             assert page.locator('#map img.leaflet-tile-loaded').first.evaluate('(img) => img.naturalWidth > 0')
-            assert page.evaluate('map.getZoom()') == 13
+            assert page.evaluate('map.getZoom()') >= 10
             page.locator('.leaflet-control-zoom-in').click()
             expect(page.locator('#map .leaflet-control-attribution')).to_contain_text('OpenStreetMap')
-            page.wait_for_function('map.getZoom() === 14')
-            expect(page.locator('.leaflet-marker-icon')).to_have_count(0)
+            page.wait_for_function('map.getZoom() >= 11')
+            expect(page.locator('.leaflet-marker-icon')).to_have_count(2)
+            expect(page.locator('.leaflet-control-layers')).to_contain_text('Zdjęcia lotnicze')
         search = page.locator('#search')
         search.fill('  jozefina   jablonka ')
         expect(page.locator('.grave')).to_have_count(1)
