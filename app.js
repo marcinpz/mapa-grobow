@@ -1,6 +1,8 @@
 'use strict';
 let dataset;
 let cemeteryFilter = 'all';
+const cemeteryMarkers = new Map();
+const cemeteryCenters = new Map();
 let map;
 const markers = new Map();
 const byId = id => document.getElementById(id);
@@ -18,16 +20,43 @@ function initializeMap() {
     byId('map').textContent = 'Mapa jest niedostępna. Lista i karty grobów nadal działają.';
     return;
   }
-  map = L.map('map').setView([49.48, 19.69], 13);
-  L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  map = L.map('map').setView([49.50, 19.71], 12);
+  const streets = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 19, attribution: '© OpenStreetMap contributors'
   }).addTo(map);
+  const aerial = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+    maxZoom: 19, maxNativeZoom: 19,
+    attribution: 'Imagery © Esri, Maxar, Earthstar Geographics, GIS User Community'
+  });
+  L.control.layers({'Mapa OpenStreetMap': streets, 'Zdjęcia lotnicze / satelitarne': aerial}, null, {collapsed: false}).addTo(map);
+  for (const cemetery of dataset.cemeteries) {
+    const gps = cemetery.coordinates;
+    if (!validGps(gps)) continue;
+    cemeteryCenters.set(cemetery.id, [gps.lat, gps.lon]);
+    const marker = L.marker([gps.lat, gps.lon]).bindPopup(
+      element('span', cemetery.name + ' — orientacyjny środek cmentarza, nie położenie grobu')
+    ).addTo(map);
+    cemeteryMarkers.set(cemetery.id, marker);
+  }
+  updateMapForFilter();
   dataset.graves.forEach(grave => {
     const gps = grave.location?.coordinates;
     if (!validGps(gps)) return;
     const marker = L.marker([gps.lat, gps.lon]).bindPopup(element('span', grave.label)).on('click', () => show(grave, true));
     markers.set(grave.id, marker);
   });
+}
+function updateMapForFilter() {
+  if (!map) return;
+  for (const [id, marker] of cemeteryMarkers) {
+    if (cemeteryFilter === 'all' || cemeteryFilter === id) marker.addTo(map);
+    else map.removeLayer(marker);
+  }
+  if (cemeteryFilter !== 'all' && cemeteryCenters.has(cemeteryFilter)) {
+    map.setView(cemeteryCenters.get(cemeteryFilter), 18);
+  } else if (cemeteryCenters.size > 1) {
+    map.fitBounds([...cemeteryCenters.values()], {padding: [25, 25]});
+  }
 }
 function show(grave, moveFocus = false) {
   const details = byId('details');
@@ -61,7 +90,10 @@ function show(grave, moveFocus = false) {
     paragraph.append(link);
     details.append(paragraph);
     if (map) map.setView([gps.lat, gps.lon], 18);
-  } else details.append(element('p', 'Dokładne współrzędne GPS jeszcze nieustalone.', 'muted'));
+  } else {
+    details.append(element('p', 'Dokładne współrzędne grobu nieustalone. Znacznik na mapie wskazuje tylko cmentarz.', 'muted'));
+    if (map && cemeteryCenters.has(grave.cemeteryId)) map.setView(cemeteryCenters.get(grave.cemeteryId), 18);
+  }
   if (moveFocus) {
     heading.focus({preventScroll: true});
     details.scrollIntoView({block: 'start'});
@@ -97,6 +129,7 @@ Promise.all(['jablonka', 'orawka'].map(async id => {
   return data;
 })).then(cemeteries => {
   dataset = {
+    cemeteries: cemeteries.map(c => c.cemetery),
     people: cemeteries.flatMap(c => c.people),
     graves: cemeteries.flatMap(c => c.graves.map(g => ({
       ...g, cemeteryId: c.cemetery.id, cemeteryName: c.cemetery.name,
@@ -112,6 +145,7 @@ Promise.all(['jablonka', 'orawka'].map(async id => {
   filter.addEventListener('change', event => {
     cemeteryFilter = event.target.value;
     render(byId('search').value);
+    updateMapForFilter();
   });
   initializeMap();
   render(byId('search').value);
