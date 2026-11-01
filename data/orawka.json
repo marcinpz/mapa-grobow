@@ -32,6 +32,19 @@
       ],
       "photosPending": true,
       "photoNotes": "Dwa zdjęcia przesłane 2026-11-01"
+    },
+    {
+      "id": "orawka-grave-004",
+      "label": "Tadeusz Otrębiak",
+      "location": {
+        "description": "Cmentarz w Orawce; niski nagrobek z kamienia lastrykowego, kwiaty i znicze, dokładne współrzędne nieustalone",
+        "coordinates": null
+      },
+      "personIds": [
+        "tadeusz-otrebiak-1965"
+      ],
+      "photosPending": true,
+      "photoNotes": "Dwa zdjęcia przesłane 2026-11-01."
     }
   ],
   "people": [
@@ -40,71 +53,23 @@
       "name": "Stanisław Polaczek",
       "birth": "1958-02-21",
       "death": "1997-11-11",
-      "notes": "Mąż Anieli Polaczek, siostry Danuty (mamy użytkownika); wujek przez małżeństwo."
-    },
-    {
-      "id": "aniela-polaczek",
-      "name": "Aniela Polaczek",
-      "birth": null,
-      "death": null,
-      "privacy": "private",
-      "notes": "Siostra Danuty, mamy użytkownika; żona Stanisława Polaczka. Status życia nieustalony."
-    },
-    {
-      "id": "danuta-mama",
-      "name": "Danuta",
-      "birth": null,
-      "death": null,
-      "privacy": "private",
-      "notes": "Mama użytkownika; siostra Anieli Polaczek. Nazwisko nieustalone."
+      "notes": "Zmarły krewny użytkownika (wujek przez małżeństwo)."
     },
     {
       "id": "kazimierz-zborowski-1961",
       "name": "Kazimierz Zborowski",
       "birth": "1961-01-13",
       "death": "2014-01-10",
-      "notes": "Mąż Bożeny, siostry Danuty, mamy użytkownika."
+      "notes": "Zmarły krewny użytkownika (wujek przez małżeństwo)."
     },
     {
-      "id": "bozena-zborowska",
-      "name": "Bożena Zborowska",
-      "privacy": "private",
-      "birth": null,
-      "death": null,
-      "notes": "Siostra Danuty i Anieli; żona Kazimierza Zborowskiego. Status życia nieustalony."
+      "id": "tadeusz-otrebiak-1965",
+      "name": "Tadeusz Otrębiak",
+      "birth": "1965-10-07",
+      "death": "1993-11-21",
+      "notes": "Brat Bożeny, Anieli i Danuty (informacja rodzinna); dane żyjących krewnych przechowywać poza publicznym repozytorium."
     }
   ],
-  "relationships": [
-    {
-      "type": "spouse",
-      "a": "stanislaw-polaczek-1958",
-      "b": "aniela-polaczek",
-      "source": "user"
-    },
-    {
-      "type": "sibling",
-      "a": "aniela-polaczek",
-      "b": "danuta-mama",
-      "source": "user"
-    },
-    {
-      "type": "spouse",
-      "a": "kazimierz-zborowski-1961",
-      "b": "bozena-zborowska",
-      "source": "user"
-    },
-    {
-      "type": "sibling",
-      "a": "bozena-zborowska",
-      "b": "danuta-mama",
-      "source": "user"
-    },
-    {
-      "type": "sibling",
-      "a": "bozena-zborowska",
-      "b": "aniela-polaczek",
-      "source": "user"
-    }
-  ],
+  "relationships": [],
   "provenance": "Zdjęcia i informacja rodzinna użytkownika z 2026-11-01. Fotografie nie zostały jeszcze dodane do repozytorium."
 }
