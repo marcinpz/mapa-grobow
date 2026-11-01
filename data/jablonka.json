@@ -4,7 +4,13 @@
     "id": "jablonka",
     "name": "Cmentarz w Jabłonce",
     "locality": "Jabłonka",
-    "country": "PL"
+    "country": "PL",
+    "coordinates": {
+      "lat": 49.4866,
+      "lon": 19.7006
+    },
+    "coordinateSource": "https://bazagrobow.pl/cmentarze/malopolskie/jablonka/cmentarz-przemienienia-panskiego-jablonka/",
+    "coordinatePrecision": "approximate-cemetery-center"
   },
   "graves": [
     {
