@@ -110,7 +110,9 @@
       "id": "maria-burtan-1908",
       "name": "Maria Burtan",
       "birth": "1908-10-05",
-      "death": "1969-09-26"
+      "death": "1969-09-26",
+      "birthSurname": "Pilch",
+      "notes": "Najstarsza siostra Stefanii Zborek z domu Pilch; żona Kazimierza Burtana."
     },
     {
       "id": "andrzej-pilch-1912",
@@ -122,7 +124,8 @@
       "id": "wanda-pilch-1920",
       "name": "Wanda Pilch",
       "birth": "1920-02-09",
-      "death": "1982-08-16"
+      "death": "1982-08-16",
+      "notes": "Żona Andrzeja Pilcha (1912–1981), brata Stefanii."
     },
     {
       "id": "anna-basisty-1925",
@@ -207,6 +210,25 @@
       "parent": "andrzej-pilch-senior",
       "child": "stefania-zborek-1920",
       "source": "user"
+    },
+    {
+      "type": "sibling",
+      "a": "maria-burtan-1908",
+      "b": "stefania-zborek-1920",
+      "source": "user",
+      "notes": "Maria była najstarszą siostrą Stefanii"
+    },
+    {
+      "type": "spouse",
+      "a": "maria-burtan-1908",
+      "b": "kazimierz-burtan-1880",
+      "source": "user"
+    },
+    {
+      "type": "spouse",
+      "a": "wanda-pilch-1920",
+      "b": "andrzej-pilch-1912",
+      "source": "user"
     }
   ],
   "unresolved": [
@@ -217,4 +239,3 @@
   ],
   "provenance": "Zdjęcia nagrobków i relacje podane przez użytkownika w rozmowie 2026-11-01. Zdjęcia nie zostały jeszcze przesłane do repozytorium."
 }
-
