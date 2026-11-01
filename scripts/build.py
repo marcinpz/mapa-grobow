@@ -5,15 +5,18 @@ import re
 import shutil
 
 ROOT = Path(__file__).resolve().parent.parent
-data = json.loads((ROOT / 'data/jablonka.json').read_text())
-people = {person['id']: person for person in data['people']}
-assert len(people) == len(data['people']), 'Duplicate person IDs'
-assert len({g['id'] for g in data['graves']}) == len(data['graves']), 'Duplicate grave IDs'
+cemetery_files = ['data/jablonka.json', 'data/orawka.json']
+datasets = [json.loads((ROOT / name).read_text()) for name in cemetery_files]
+all_people = [p for data in datasets for p in data['people']]
+all_graves = [g for data in datasets for g in data['graves']]
+people = {person['id']: person for person in all_people}
+assert len(people) == len(all_people), 'Duplicate person IDs'
+assert len({g['id'] for g in all_graves}) == len(all_graves), 'Duplicate grave IDs'
 for person in people.values():
     assert person.get('living') is not True, 'Living person in public dataset'
     assert not ({'email', 'phone', 'address', 'privateNotes'} & person.keys()), 'Private fields in public dataset'
 photos = set()
-for grave in data['graves']:
+for grave in all_graves:
     assert all(pid in people for pid in grave['personIds']), 'Unknown person reference'
     assert grave.get('photosPending') == (not bool(grave.get('photos'))), 'Inconsistent photo status'
     for photo in grave.get('photos', []):
@@ -24,8 +27,8 @@ output = ROOT / '_site'
 if output.exists():
     shutil.rmtree(output)
 output.mkdir()
-for name in ['index.html', 'app.js', '.nojekyll', 'data/jablonka.json', *sorted(photos)]:
+for name in ['index.html', 'app.js', '.nojekyll', *cemetery_files, *sorted(photos)]:
     destination = output / name
     destination.parent.mkdir(parents=True, exist_ok=True)
     shutil.copyfile(ROOT / name, destination)
-print(f'Public build: {len(data["graves"])} graves, {len(photos)} photos')
+print(f'Public build: {len(all_graves)} graves, {len(photos)} photos')
