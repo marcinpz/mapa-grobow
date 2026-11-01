@@ -27,9 +27,38 @@
       "name": "Stanisław Polaczek",
       "birth": "1958-02-21",
       "death": "1997-11-11",
-      "notes": "Wujek użytkownika; dokładny stopień pokrewieństwa do ustalenia. Daty odczytane z nagrobka."
+      "notes": "Mąż Anieli Polaczek, siostry Danuty (mamy użytkownika); wujek przez małżeństwo."
+    },
+    {
+      "id": "aniela-polaczek",
+      "name": "Aniela Polaczek",
+      "birth": null,
+      "death": null,
+      "privacy": "private",
+      "notes": "Siostra Danuty, mamy użytkownika; żona Stanisława Polaczka. Status życia nieustalony."
+    },
+    {
+      "id": "danuta-mama",
+      "name": "Danuta",
+      "birth": null,
+      "death": null,
+      "privacy": "private",
+      "notes": "Mama użytkownika; siostra Anieli Polaczek. Nazwisko nieustalone."
     }
   ],
-  "relationships": [],
+  "relationships": [
+    {
+      "type": "spouse",
+      "a": "stanislaw-polaczek-1958",
+      "b": "aniela-polaczek",
+      "source": "user"
+    },
+    {
+      "type": "sibling",
+      "a": "aniela-polaczek",
+      "b": "danuta-mama",
+      "source": "user"
+    }
+  ],
   "provenance": "Zdjęcia i informacja rodzinna użytkownika z 2026-11-01. Fotografie nie zostały jeszcze dodane do repozytorium."
 }
