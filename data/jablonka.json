@@ -145,7 +145,9 @@
       "id": "jozefina-chrustek-1923",
       "name": "Józefina Chrustek",
       "birth": "1923-01-02",
-      "death": "2003-03-24"
+      "death": "2003-03-24",
+      "birthSurname": "Pilch",
+      "notes": "Siostra Stefanii Zborek z domu Pilch (potwierdzone przez rodzinę)."
     },
     {
       "id": "weronika-pilch",
@@ -166,6 +168,20 @@
       "birth": null,
       "death": null,
       "notes": "Ojciec Stefanii Zborek z domu Pilch; inna osoba niż Andrzej Pilch (1912–1981). Grób nieustalony."
+    },
+    {
+      "id": "jozef-pilch",
+      "name": "Józef Pilch",
+      "birth": null,
+      "death": null,
+      "notes": "Brat Stefanii Zborek z domu Pilch. Mieszkał w Jurgowie. Brak danych o pochówku i datach."
+    },
+    {
+      "id": "malgorzata-sroda",
+      "name": "Małgorzata Środa",
+      "birth": null,
+      "death": null,
+      "notes": "Siostra Stefanii Zborek z domu Pilch. Mieszkała w Kozach. Nazwisko panieńskie Pilch prawdopodobne, niepotwierdzone. Brak danych o pochówku i datach."
     }
   ],
   "relationships": [
@@ -229,13 +245,32 @@
       "a": "wanda-pilch-1920",
       "b": "andrzej-pilch-1912",
       "source": "user"
+    },
+    {
+      "type": "sibling",
+      "a": "jozefina-chrustek-1923",
+      "b": "stefania-zborek-1920",
+      "source": "user"
+    },
+    {
+      "type": "sibling",
+      "a": "jozef-pilch",
+      "b": "stefania-zborek-1920",
+      "source": "user"
+    },
+    {
+      "type": "sibling",
+      "a": "malgorzata-sroda",
+      "b": "stefania-zborek-1920",
+      "source": "user"
     }
   ],
   "unresolved": [
     "Napis Andrzej Pilch na grobie 003 wymaga identyfikacji.",
     "Daty Anny Basisty i Weroniki Pilch wymagają weryfikacji.",
     "Brak współrzędnych GPS wszystkich grobów.",
-    "Relacja Weroniki Pilch z pozostałymi dziećmi Andrzeja Pilcha seniora wymaga osobnego potwierdzenia."
+    "Relacja Weroniki Pilch z pozostałymi dziećmi Andrzeja Pilcha seniora wymaga osobnego potwierdzenia.",
+    "Daty życia i miejsca pochówku Józefa Pilcha (Jurgów) oraz Małgorzaty Środy (Kozy) nieustalone."
   ],
   "provenance": "Zdjęcia nagrobków i relacje podane przez użytkownika w rozmowie 2026-11-01. Zdjęcia nie zostały jeszcze przesłane do repozytorium."
 }
