@@ -263,13 +263,96 @@
       "a": "malgorzata-sroda",
       "b": "stefania-zborek-1920",
       "source": "user"
+    },
+    {
+      "type": "parent",
+      "parent": "andrzej-pilch-senior",
+      "child": "maria-burtan-1908",
+      "source": "user",
+      "notes": "Potwierdzone przez członka rodziny"
+    },
+    {
+      "type": "parent",
+      "parent": "weronika-pilch",
+      "child": "maria-burtan-1908",
+      "source": "user",
+      "notes": "Potwierdzone przez członka rodziny"
+    },
+    {
+      "type": "parent",
+      "parent": "andrzej-pilch-senior",
+      "child": "andrzej-pilch-1912",
+      "source": "user",
+      "notes": "Potwierdzone przez członka rodziny"
+    },
+    {
+      "type": "parent",
+      "parent": "weronika-pilch",
+      "child": "andrzej-pilch-1912",
+      "source": "user",
+      "notes": "Potwierdzone przez członka rodziny"
+    },
+    {
+      "type": "parent",
+      "parent": "andrzej-pilch-senior",
+      "child": "jozefina-chrustek-1923",
+      "source": "user",
+      "notes": "Potwierdzone przez członka rodziny"
+    },
+    {
+      "type": "parent",
+      "parent": "weronika-pilch",
+      "child": "jozefina-chrustek-1923",
+      "source": "user",
+      "notes": "Potwierdzone przez członka rodziny"
+    },
+    {
+      "type": "parent",
+      "parent": "andrzej-pilch-senior",
+      "child": "anna-basisty-1925",
+      "source": "user",
+      "notes": "Potwierdzone przez członka rodziny"
+    },
+    {
+      "type": "parent",
+      "parent": "weronika-pilch",
+      "child": "anna-basisty-1925",
+      "source": "user",
+      "notes": "Potwierdzone przez członka rodziny"
+    },
+    {
+      "type": "parent",
+      "parent": "andrzej-pilch-senior",
+      "child": "jozef-pilch",
+      "source": "user",
+      "notes": "Potwierdzone przez członka rodziny"
+    },
+    {
+      "type": "parent",
+      "parent": "weronika-pilch",
+      "child": "jozef-pilch",
+      "source": "user",
+      "notes": "Potwierdzone przez członka rodziny"
+    },
+    {
+      "type": "parent",
+      "parent": "andrzej-pilch-senior",
+      "child": "malgorzata-sroda",
+      "source": "user",
+      "notes": "Potwierdzone przez członka rodziny"
+    },
+    {
+      "type": "parent",
+      "parent": "weronika-pilch",
+      "child": "malgorzata-sroda",
+      "source": "user",
+      "notes": "Potwierdzone przez członka rodziny"
     }
   ],
   "unresolved": [
     "Napis Andrzej Pilch na grobie 003 wymaga identyfikacji.",
     "Daty Anny Basisty i Weroniki Pilch wymagają weryfikacji.",
     "Brak współrzędnych GPS wszystkich grobów.",
-    "Relacja Weroniki Pilch z pozostałymi dziećmi Andrzeja Pilcha seniora wymaga osobnego potwierdzenia.",
     "Daty życia i miejsca pochówku Józefa Pilcha (Jurgów) oraz Małgorzaty Środy (Kozy) nieustalone."
   ],
   "provenance": "Zdjęcia nagrobków i relacje podane przez użytkownika w rozmowie 2026-11-01. Zdjęcia nie zostały jeszcze przesłane do repozytorium."
