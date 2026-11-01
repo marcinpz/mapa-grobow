@@ -1,21 +1,22 @@
 # Mapa Grobów
 
-Katalog grobów z mapą OpenStreetMap i prywatną warstwą genealogiczną.
+Publiczny katalog grobów z mapą OpenStreetMap. Prywatne relacje rodzinne przechowywane są osobno w repozytorium `marcinpz/rodzina-genealogia`.
 
 ## Status
-Statyczna aplikacja obejmuje pięć grobów z Jabłonki, wyszukiwarkę i karty nagrobków.
+Statyczna aplikacja obejmuje 11 grobów: pięć w Jabłonce i sześć w Orawce, filtr cmentarza, wyszukiwarkę i karty nagrobków.
 Adres docelowy: https://marcinpz.github.io/mapa-grobow/.
 Publikacja wymaga włączenia Settings → Pages → Source: GitHub Actions.
 Ostatnio potwierdzony problem: Pages nie było włączone (configure-pages zwracało 404).
 
 - [Dane z Jabłonki](data/jablonka.json)
+- [Dane z Orawki](data/orawka.json)
 - [Plan MVP](docs/MVP.md)
 
 Zdjęcia nagrobków czekają na import. Daty i relacje niepewne oznaczono do weryfikacji. Dane żyjących krewnych nie są umieszczane w katalogu publicznym.
 
-W repozytorium ani w plikach dostępnych w tej sesji nie było zdjęć z rozmowy.
+Fotografie z rozmowy przygotowano w osobnym archiwum ZIP, ale nie zostały jeszcze zaimportowane do repozytorium.
 Każdy grób ma pustą tablicę photos i photosPending: true. Dokładne współrzędne
-wszystkich grobów pozostają nieustalone; mapa pokazuje obszar Jabłonki bez pinezek.
+wszystkich grobów pozostają nieustalone; lista obsługuje oba cmentarze, a mapa nie pokazuje jeszcze pinezek.
 
 ## Publikacja i sprawdzanie
 
