@@ -32,7 +32,9 @@ with sync_playwright() as playwright:
         if args.offline_map:
             expect(page.locator('#map')).to_contain_text('Mapa jest niedostępna')
         else:
-            expect(page.locator('#map .leaflet-tile-pane')).to_be_visible()
+            expect(page.locator('#map')).to_be_visible()
+            expect(page.locator('#map img.leaflet-tile-loaded').first).to_be_visible(timeout=15000)
+            assert page.locator('#map img.leaflet-tile-loaded').first.evaluate('(img) => img.naturalWidth > 0')
             assert page.evaluate('map.getZoom()') == 13
             page.locator('.leaflet-control-zoom-in').click()
             expect(page.locator('#map .leaflet-control-attribution')).to_contain_text('OpenStreetMap')
