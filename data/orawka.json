@@ -59,6 +59,19 @@
       ],
       "photosPending": true,
       "photoNotes": "Trzy zdjęcia przekazane w rozmowie 2026-11-01."
+    },
+    {
+      "id": "orawka-grave-006",
+      "label": "Arkadiusz Aniołak",
+      "location": {
+        "description": "Cmentarz w Orawce; jasny nagrobek z krzyżem, bezpośrednio przed grobem Władysława i Joanny Otrębiaków",
+        "coordinates": null
+      },
+      "personIds": [
+        "arkadiusz-aniolak-1996"
+      ],
+      "photosPending": true,
+      "photoNotes": "Dwa zdjęcia przekazane 2026-11-01; pliki nie są jeszcze w repozytorium."
     }
   ],
   "people": [
@@ -98,6 +111,13 @@
       "death": "2003-04-10",
       "dateConfidence": "to-verify",
       "notes": "Babcia użytkownika od strony matki."
+    },
+    {
+      "id": "arkadiusz-aniolak-1996",
+      "name": "Arkadiusz Aniołak",
+      "birth": "1996-09-20",
+      "death": "2005-10-06",
+      "notes": "Kuzyn użytkownika, syn Aliny z domu Otrębiak. Powiązanie Aliny z Władysławem i Joanną wymaga potwierdzenia."
     }
   ],
   "relationships": [
@@ -114,5 +134,8 @@
       "source": "user"
     }
   ],
-  "provenance": "Zdjęcia i informacja rodzinna użytkownika z 2026-11-01. Fotografie nie zostały jeszcze dodane do repozytorium."
+  "provenance": "Zdjęcia i informacja rodzinna użytkownika z 2026-11-01. Fotografie nie zostały jeszcze dodane do repozytorium.",
+  "unresolved": [
+    "Ustalić, czy Alina z domu Otrębiak (matka Arkadiusza Aniołaka) była córką Władysława i Joanny Otrębiaków."
+  ]
 }
