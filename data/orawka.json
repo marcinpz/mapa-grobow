@@ -18,7 +18,22 @@
         "stanislaw-polaczek-1958"
       ],
       "photosPending": true,
-      "photoNotes": "Dwa zdjęcia nagrobka przekazane w rozmowie 2026-11-01."
+      "photoNotes": "Dwa zdjęcia nagrobka przekazane w rozmowie 2026-11-01.",
+      "photos": []
+    },
+    {
+      "id": "orawka-grave-002",
+      "label": "Jan Otrębiak",
+      "location": {
+        "description": "Cmentarz w Orawce; metalowy krzyż i bukszpan, w pobliżu grobu Marii Kwiatkowskiej; dokładna lokalizacja nieustalona",
+        "coordinates": null
+      },
+      "personIds": [
+        "jan-otrebiak-1892"
+      ],
+      "photosPending": true,
+      "photos": [],
+      "photoNotes": "Dwa zdjęcia przekazane w rozmowie; nie zostały jeszcze dodane do repozytorium."
     },
     {
       "id": "orawka-grave-003",
@@ -31,7 +46,8 @@
         "kazimierz-zborowski-1961"
       ],
       "photosPending": true,
-      "photoNotes": "Dwa zdjęcia przesłane 2026-11-01"
+      "photoNotes": "Dwa zdjęcia przesłane 2026-11-01",
+      "photos": []
     },
     {
       "id": "orawka-grave-004",
@@ -44,7 +60,8 @@
         "tadeusz-otrebiak-1965"
       ],
       "photosPending": true,
-      "photoNotes": "Dwa zdjęcia przesłane 2026-11-01."
+      "photoNotes": "Dwa zdjęcia przesłane 2026-11-01.",
+      "photos": []
     },
     {
       "id": "orawka-grave-005",
@@ -58,7 +75,8 @@
         "joanna-otrebiak-1935"
       ],
       "photosPending": true,
-      "photoNotes": "Trzy zdjęcia przekazane w rozmowie 2026-11-01."
+      "photoNotes": "Trzy zdjęcia przekazane w rozmowie 2026-11-01.",
+      "photos": []
     },
     {
       "id": "orawka-grave-006",
@@ -71,7 +89,8 @@
         "arkadiusz-antolak-1996"
       ],
       "photosPending": true,
-      "photoNotes": "Dwa zdjęcia przekazane 2026-11-01; pliki nie są jeszcze w repozytorium."
+      "photoNotes": "Dwa zdjęcia przekazane 2026-11-01; pliki nie są jeszcze w repozytorium.",
+      "photos": []
     }
   ],
   "people": [
@@ -79,38 +98,33 @@
       "id": "stanislaw-polaczek-1958",
       "name": "Stanisław Polaczek",
       "birth": "1958-02-21",
-      "death": "1997-11-11",
-      "notes": "Zmarły krewny użytkownika (wujek przez małżeństwo)."
+      "death": "1997-11-11"
     },
     {
       "id": "kazimierz-zborowski-1961",
       "name": "Kazimierz Zborowski",
       "birth": "1961-01-13",
-      "death": "2014-01-10",
-      "notes": "Zmarły krewny użytkownika (wujek przez małżeństwo)."
+      "death": "2014-01-10"
     },
     {
       "id": "tadeusz-otrebiak-1965",
       "name": "Tadeusz Otrębiak",
       "birth": "1965-10-07",
-      "death": "1993-11-21",
-      "notes": "Brat Bożeny, Anieli i Danuty (informacja rodzinna); dane żyjących krewnych przechowywać poza publicznym repozytorium."
+      "death": "1993-11-21"
     },
     {
       "id": "wladyslaw-otrebiak-1939",
       "name": "Władysław Otrębiak",
       "birth": "1939-10-05",
       "death": "2007-12-02",
-      "dateConfidence": "to-verify",
-      "notes": "Dziadek użytkownika od strony matki."
+      "dateConfidence": "to-verify"
     },
     {
       "id": "joanna-otrebiak-1935",
       "name": "Joanna Otrębiak",
       "birth": "1935-09-05",
       "death": "2003-04-10",
-      "dateConfidence": "to-verify",
-      "notes": "Babcia użytkownika od strony matki."
+      "dateConfidence": "to-verify"
     },
     {
       "id": "arkadiusz-antolak-1996",
@@ -118,24 +132,20 @@
       "birth": "1996-09-20",
       "death": "2005-10-06",
       "notes": "Pochowany w Orawce. Nazwisko skorygowane na podstawie informacji rodziny."
-    }
-  ],
-  "relationships": [
-    {
-      "type": "spouse",
-      "a": "wladyslaw-otrebiak-1939",
-      "b": "joanna-otrebiak-1935",
-      "source": "user"
     },
     {
-      "type": "parent",
-      "parent": "jan-otrebiak-1892",
-      "child": "wladyslaw-otrebiak-1939",
-      "source": "user"
+      "id": "jan-otrebiak-1892",
+      "name": "Jan Otrębiak",
+      "birth": "1892-07-16",
+      "death": "1974-10-04",
+      "dateConfidence": "to-verify",
+      "notes": "Daty odczytane z nagrobka wymagają potwierdzenia."
     }
   ],
-  "provenance": "Zdjęcia i informacja rodzinna użytkownika z 2026-11-01. Fotografie nie zostały jeszcze dodane do repozytorium.",
+  "relationships": [],
+  "provenance": "Dane z nagrobków i fotografie przekazane przez rodzinę. Zdjęcia oczekują na import; relacje żyjących krewnych przechowywane wyłącznie w prywatnym repozytorium.",
   "unresolved": [
-    "Ustalić, czy Alina z domu Otrębiak (matka Arkadiusza Aniołaka) była córką Władysława i Joanny Otrębiaków."
+    "Brak dokładnych współrzędnych grobów.",
+    "Daty Jana, Władysława i Joanny Otrębiaków wymagają weryfikacji z nagrobków."
   ]
 }
