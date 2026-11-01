@@ -1,0 +1,190 @@
+{
+  "schemaVersion": 1,
+  "cemetery": {
+    "id": "jablonka",
+    "name": "Cmentarz w Jabłonce",
+    "locality": "Jabłonka",
+    "country": "PL"
+  },
+  "graves": [
+    {
+      "id": "grave-001",
+      "label": "Zborek",
+      "location": {
+        "description": "Pierwszy rząd od góry, przy ogrodzeniu",
+        "coordinates": null
+      },
+      "personIds": [
+        "stefan-zborek-1904",
+        "stefania-zborek-1920"
+      ],
+      "adjacentGraveIds": [
+        "grave-002"
+      ],
+      "photosPending": true
+    },
+    {
+      "id": "grave-002",
+      "label": "Burtan / Pilch",
+      "location": {
+        "description": "Pierwszy rząd od góry, na lewo od grobu 001 patrząc od alejki",
+        "coordinates": null
+      },
+      "personIds": [
+        "kazimierz-burtan-1880",
+        "maria-burtan-1908",
+        "andrzej-pilch-1912",
+        "wanda-pilch-1920"
+      ],
+      "adjacentGraveIds": [
+        "grave-001"
+      ],
+      "photosPending": true
+    },
+    {
+      "id": "grave-003",
+      "label": "Basisty / Pilch",
+      "location": {
+        "description": "Cmentarz Jabłonka; dokładne położenie nieustalone",
+        "coordinates": null
+      },
+      "personIds": [
+        "anna-basisty-1925",
+        "karol-basisty-1926"
+      ],
+      "otherInscription": "Andrzej Pilch — napis bez widocznych dat, tożsamość i charakter upamiętnienia do ustalenia",
+      "photosPending": true
+    },
+    {
+      "id": "grave-004",
+      "label": "Chruściek / Pilch",
+      "location": {
+        "description": "Cmentarz Jabłonka; dokładne położenie nieustalone",
+        "coordinates": null
+      },
+      "personIds": [
+        "jozefina-chrusciek-1923",
+        "weronika-pilch"
+      ],
+      "photosPending": true
+    },
+    {
+      "id": "grave-005",
+      "label": "Antoni Zborek",
+      "location": {
+        "description": "Cmentarz Jabłonka; dokładne położenie nieustalone",
+        "coordinates": null
+      },
+      "personIds": [
+        "antoni-zborek-1943"
+      ],
+      "photosPending": true
+    }
+  ],
+  "people": [
+    {
+      "id": "stefan-zborek-1904",
+      "name": "Stefan Zborek",
+      "birth": "1904-12-22",
+      "death": "1969-10-17"
+    },
+    {
+      "id": "stefania-zborek-1920",
+      "name": "Stefania Zborek",
+      "birth": "1920-01-18",
+      "death": "2004-10-04",
+      "birthSurname": "Pilch"
+    },
+    {
+      "id": "kazimierz-burtan-1880",
+      "name": "Kazimierz Burtan",
+      "birth": "1880-10-02",
+      "death": "1958-11-22"
+    },
+    {
+      "id": "maria-burtan-1908",
+      "name": "Maria Burtan",
+      "birth": "1908-10-05",
+      "death": "1969-09-26"
+    },
+    {
+      "id": "andrzej-pilch-1912",
+      "name": "Andrzej Pilch",
+      "birth": "1912-11-23",
+      "death": "1981-07-11"
+    },
+    {
+      "id": "wanda-pilch-1920",
+      "name": "Wanda Pilch",
+      "birth": "1920-02-09",
+      "death": "1982-08-16"
+    },
+    {
+      "id": "anna-basisty-1925",
+      "name": "Anna Basisty",
+      "birth": "1925-06-13",
+      "birthDateConfidence": "uncertain",
+      "death": "2018",
+      "birthSurname": "Pilch"
+    },
+    {
+      "id": "karol-basisty-1926",
+      "name": "Karol Basisty",
+      "birth": "1926-07-31",
+      "death": "2008-09-07"
+    },
+    {
+      "id": "jozefina-chrusciek-1923",
+      "name": "Józefina Chruściek",
+      "birth": "1923-01-02",
+      "death": "2003-03-24"
+    },
+    {
+      "id": "weronika-pilch",
+      "name": "Weronika Pilch",
+      "birth": null,
+      "death": null,
+      "notes": "Daty częściowo zasłonięte; możliwa matka rodzeństwa Pilch — niepotwierdzone"
+    },
+    {
+      "id": "antoni-zborek-1943",
+      "name": "Antoni Zborek",
+      "birth": "1943-01-16",
+      "death": "2019-03-05"
+    }
+  ],
+  "relationships": [
+    {
+      "type": "spouse",
+      "a": "stefan-zborek-1904",
+      "b": "stefania-zborek-1920",
+      "source": "user"
+    },
+    {
+      "type": "sibling",
+      "a": "stefania-zborek-1920",
+      "b": "andrzej-pilch-1912",
+      "source": "user"
+    },
+    {
+      "type": "sibling",
+      "a": "stefania-zborek-1920",
+      "b": "anna-basisty-1925",
+      "source": "user"
+    },
+    {
+      "type": "spouse",
+      "a": "anna-basisty-1925",
+      "b": "karol-basisty-1926",
+      "source": "user"
+    }
+  ],
+  "unresolved": [
+    "Andrzej Pilch senior, ojciec Stefanii, Anny i Andrzeja juniora: brak dat i jednoznacznego przypisania do grobu.",
+    "Czy Weronika Pilch była ich matką, a Józefina Chruściek siostrą?",
+    "Napis Andrzej Pilch na grobie 003 wymaga identyfikacji.",
+    "Daty Anny Basisty i Weroniki Pilch wymagają weryfikacji.",
+    "Brak współrzędnych GPS wszystkich grobów."
+  ],
+  "provenance": "Zdjęcia nagrobków i relacje podane przez użytkownika w rozmowie 2026-11-01. Zdjęcia nie zostały jeszcze przesłane do repozytorium."
+}
