@@ -49,7 +49,10 @@ with sync_playwright() as playwright:
             page.locator('.leaflet-control-zoom-in').click()
             expect(page.locator('#map .leaflet-control-attribution')).to_contain_text('Esri')
             page.wait_for_function('map.getZoom() >= 11')
-            expect(page.locator('.leaflet-marker-icon')).to_have_count(2)
+            expect(page.locator('.leaflet-marker-icon')).to_have_count(4)
+            assert page.evaluate("markers.has('grave-001') && markers.has('grave-002')")
+            assert 1 < page.evaluate("markers.get('grave-001').getLatLng().distanceTo(markers.get('grave-002').getLatLng())") < 5
+            expect(page.locator('#details')).to_contain_text('bez pomiaru GPS')
             expect(page.locator('#basemap-toggle')).to_have_text('🗺️ Mapa')
             expect(page.locator('#basemap-toggle')).to_have_attribute('aria-pressed', 'true')
             page.locator('#basemap-toggle').click()

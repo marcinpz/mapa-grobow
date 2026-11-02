@@ -64,10 +64,20 @@
       "label": "Zborek",
       "location": {
         "description": "Pierwszy rząd od góry, przy ogrodzeniu; katalog parafialny: L-12-9",
-        "coordinates": null,
+        "coordinates": {
+          "lat": 49.4865803,
+          "lon": 19.70214773
+        },
         "sector": "L",
         "row": "12",
-        "number": "9"
+        "number": "9",
+        "precision": "estimated-from-parish-plan",
+        "source": "https://parafiajablonka.katolicki.eu/cmentarz/4181/mapa_podklady/1-sektor%20l.jpg",
+        "planPixel": [
+          815,
+          833
+        ],
+        "coordinateNote": "Położenie odczytane z numerowanego planu parafii i przeliczone według dopasowania nakładki. Przybliżone współrzędne, bez pomiaru GPS."
       },
       "personIds": [
         "stefan-zborek-1904",
@@ -98,10 +108,20 @@
       "label": "Burtan / Pilch",
       "location": {
         "description": "Pierwszy rząd od góry, na lewo od grobu 001 patrząc od alejki; katalog parafialny: L-12-10",
-        "coordinates": null,
+        "coordinates": {
+          "lat": 49.48659481,
+          "lon": 19.70216522
+        },
         "sector": "L",
         "row": "12",
-        "number": "10"
+        "number": "10",
+        "precision": "estimated-from-parish-plan",
+        "source": "https://parafiajablonka.katolicki.eu/cmentarz/4181/mapa_podklady/1-sektor%20l.jpg",
+        "planPixel": [
+          819,
+          799
+        ],
+        "coordinateNote": "Położenie odczytane z numerowanego planu parafii i przeliczone według dopasowania nakładki. Przybliżone współrzędne, bez pomiaru GPS."
       },
       "personIds": [
         "kazimierz-burtan-1880",
@@ -500,7 +520,7 @@
     }
   ],
   "unresolved": [
-    "Brak współrzędnych GPS wszystkich grobów.",
+    "Brak pomiarów GPS grobów; pozycje L-12-9 i L-12-10 oszacowano z planu parafii.",
     "Daty życia i miejsca pochówku Józefa Pilcha (Jurgów) oraz Małgorzaty Środy (Kozy) nieustalone."
   ],
   "provenance": "Zdjęcia nagrobków i relacje podane przez użytkownika w rozmowie 2026-11-01. Zdjęcia nie zostały jeszcze przesłane do repozytorium. Aktualizacja 2026-11-02: dodano dwa zdjęcia grobu 003 oraz zdjęcie planu cmentarza; daty Andrzeja Pilcha seniora odczytane ze zbliżenia inskrypcji. Współrzędnych nadrukowanych na zdjęciach nie użyto do lokalizacji."

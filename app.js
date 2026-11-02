@@ -269,6 +269,7 @@ function show(grave, moveFocus = false) {
   }
   const gps = grave.location?.coordinates;
   if (validGps(gps)) {
+    if (grave.location.coordinateNote) details.append(element('p', grave.location.coordinateNote, 'muted'));
     const link = element('a', 'Nawiguj do grobu');
     link.href = 'https://www.google.com/maps/dir/?api=1&destination=' + encodeURIComponent(gps.lat + ',' + gps.lon);
     link.target = '_blank';
@@ -276,7 +277,7 @@ function show(grave, moveFocus = false) {
     const paragraph = element('p');
     paragraph.append(link);
     details.append(paragraph);
-    if (map) map.setView([gps.lat, gps.lon], 18);
+    if (map) map.setView([gps.lat, gps.lon], 21);
   } else {
     details.append(element('p', 'Dokładne współrzędne grobu nieustalone. Znacznik na mapie wskazuje tylko cmentarz.', 'muted'));
     focusCemetery(grave.cemeteryId);
