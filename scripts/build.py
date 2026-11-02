@@ -1,5 +1,6 @@
 """Publish only explicitly approved public assets, never the repository root."""
 import json
+import hashlib
 from pathlib import Path
 import re
 import shutil
@@ -31,6 +32,10 @@ for grave in all_graves:
         assert re.fullmatch(r'photos/[a-zA-Z0-9/_-]+\.(?:jpe?g|png|webp)', photo, re.I), 'Unsafe photo path'
         assert (ROOT / photo).is_file(), 'Missing grave photo'
         photos.add(photo)
+checksums = json.loads((ROOT / 'data/asset-checksums.json').read_text(encoding='utf-8'))
+assert set(checksums) == photos | plans, 'Missing or stale asset checksums'
+for name in photos | plans:
+    assert hashlib.sha256((ROOT / name).read_bytes()).hexdigest() == checksums[name], f'Corrupt asset: {name}'
 output = ROOT / '_site'
 if output.exists():
     shutil.rmtree(output)

@@ -11,6 +11,18 @@ let draftCoordinates = null;
 const markers = new Map();
 const byId = id => document.getElementById(id);
 let planMap;
+function appendSources(parent, sources) {
+  for (const source of sources || []) {
+    if (!/^https:\/\//i.test(source.url)) continue;
+    const link = element('a', source.label);
+    link.href = source.url;
+    link.target = '_blank';
+    link.rel = 'noopener';
+    const paragraph = element('p');
+    paragraph.append(link);
+    parent.append(paragraph);
+  }
+}
 function initializePlan() {
   const plan = dataset.cemeteries.find(c => c.id === 'jablonka')?.plan;
   if (!plan) return;
@@ -26,6 +38,7 @@ function initializePlan() {
   link.target = '_blank';
   link.rel = 'noopener';
   panel.append(viewer, link);
+  appendSources(panel, plan.sources);
   byId('details').before(panel);
   panel.addEventListener('toggle', () => {
     if (!panel.open) return;
@@ -174,6 +187,7 @@ function show(grave, moveFocus = false) {
     details.append(row);
   }
   if (grave.otherInscription) details.append(element('p', grave.otherInscription, 'muted'));
+  appendSources(details, grave.sources);
   const photos = grave.photos || [];
   if (!photos.length) details.append(element('p', 'Zdjęcie nagrobka czeka na dodanie.', 'muted'));
   for (const source of photos) {

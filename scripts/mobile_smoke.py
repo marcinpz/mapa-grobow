@@ -1,10 +1,13 @@
 """Chromium mobile viewport checks; optional live URL and offline map fallback."""
 import argparse
+import hashlib
+import json
 from functools import partial
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 import os
 from pathlib import Path
 import threading
+from urllib.parse import urljoin
 from playwright.sync_api import sync_playwright, expect
 
 parser = argparse.ArgumentParser()
@@ -18,6 +21,13 @@ if not args.url:
 url = args.url or f'http://127.0.0.1:{server.server_port}/'
 (root / 'test-results').mkdir(exist_ok=True)
 with sync_playwright() as playwright:
+    client = playwright.request.new_context()
+    checksums = json.loads((root / 'data/asset-checksums.json').read_text(encoding='utf-8'))
+    for asset, expected in checksums.items():
+        response = client.get(urljoin(url.rstrip('/') + '/', asset))
+        assert response.ok, f'Cannot download asset: {asset}'
+        assert hashlib.sha256(response.body()).hexdigest() == expected, f'Corrupt published asset: {asset}'
+    client.dispose()
     browser = playwright.chromium.launch(executable_path=os.environ.get('CHROMIUM_PATH'))
     for width in [360, 390, 768]:
         context = browser.new_context(viewport={'width': width, 'height': 844}, is_mobile=True, has_touch=True)
@@ -57,7 +67,8 @@ with sync_playwright() as playwright:
         search.fill('Anna Basisty')
         expect(page.locator('.grave')).to_have_count(1)
         page.locator('.grave button').click()
-        expect(page.locator('#details')).to_contain_text('2018-11')
+        expect(page.locator('#details')).to_contain_text('2018-11-19')
+        expect(page.locator('#details')).to_contain_text('H-10-18')
         expect(page.locator('#details')).to_contain_text('Andrzej Pilch')
         expect(page.locator('#details')).to_contain_text('1875-10-30 – 1941-07-28')
         expect(page.locator('#details img')).to_have_count(2)
@@ -66,7 +77,8 @@ with sync_playwright() as playwright:
             expect(photo).to_be_visible()
             page.wait_for_function('(img) => img.complete && img.naturalWidth > 0', arg=photo.element_handle())
         page.locator('#cemetery-plan summary').click()
-        expect(page.locator('#cemetery-plan a')).to_have_attribute('href', 'plans/jablonka-2026-11-02.jpg')
+        expect(page.locator('#cemetery-plan a').first).to_have_attribute('href', 'plans/jablonka-2026-11-02.jpg')
+        expect(page.get_by_role('link', name='Oryginalny plan sektora H', exact=False)).to_be_visible()
         if not args.offline_map:
             expect(page.locator('#cemetery-plan .leaflet-image-layer')).to_be_visible()
             page.locator('#cemetery-plan .leaflet-control-zoom-in').click()

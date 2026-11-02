@@ -15,7 +15,17 @@
       "image": "plans/jablonka-2026-11-02.jpg",
       "date": "2026-11-02",
       "georeferenced": false,
-      "description": "Fotografia tablicy z planem cmentarza. Brak dopasowania do współrzędnych mapy; współrzędne nadrukowane na zdjęciach są niespójne."
+      "description": "Fotografia tablicy z planem cmentarza. Brak dopasowania do współrzędnych mapy; współrzędne nadrukowane na zdjęciach są niespójne.",
+      "sources": [
+        {
+          "label": "Oryginalny plan sektora H — parafia (1722 × 1118)",
+          "url": "https://parafiajablonka.katolicki.eu/cmentarz/4181/mapa_podklady/1-sektor%20h.jpg"
+        },
+        {
+          "label": "Wyszukiwarka grobów wskazana przez parafię",
+          "url": "https://polskie-cmentarze.info/wyszukiwarka.php?clientId=4181"
+        }
+      ]
     }
   },
   "graves": [
@@ -59,8 +69,12 @@
       "id": "grave-003",
       "label": "Basisty / Pilch",
       "location": {
-        "description": "Cmentarz Jabłonka; dokładne położenie nieustalone",
-        "coordinates": null
+        "description": "Sektor H, rząd 10, grób 18 (H-10-18); katalog parafialny",
+        "coordinates": null,
+        "sector": "H",
+        "row": "10",
+        "number": "18",
+        "source": "https://polskie-cmentarze.info/fara_cme/maps-controllers/leaflet/ver-2/?graveId=934&container=4181"
       },
       "personIds": [
         "anna-basisty-1925",
@@ -72,7 +86,17 @@
         "photos/grave-003/front-2026-11-02.jpg",
         "photos/grave-003/andrzej-pilch-2026-11-02.jpg"
       ],
-      "notes": "Potwierdzone przez rodzinę: Andrzej Pilch senior pochowany razem z Anną Basisty."
+      "notes": "Potwierdzone przez rodzinę: Andrzej Pilch senior pochowany razem z Anną Basisty.",
+      "sources": [
+        {
+          "label": "Grób H-10-18 na planie parafii",
+          "url": "https://polskie-cmentarze.info/fara_cme/maps-controllers/leaflet/ver-2/?graveId=934&container=4181"
+        },
+        {
+          "label": "Zdjęcie inskrypcji Anny Basisty — parafia",
+          "url": "https://parafiajablonka.katolicki.eu/cmentarz/4181/foto/h.10.18.(2).jpg"
+        }
+      ]
     },
     {
       "id": "grave-004",
@@ -148,10 +172,12 @@
       "name": "Anna Basisty",
       "birth": "1925-06-13",
       "birthDateConfidence": "confirmed",
-      "death": "2018-11",
+      "death": "2018-11-19",
       "birthSurname": "Pilch",
-      "deathDatePrecision": "month",
-      "notes": "Dzień śmierci w listopadzie 2018 nieczytelny (ucięty na nagrobku)."
+      "deathDatePrecision": "day",
+      "notes": "Data śmierci potwierdzona na zdjęciu inskrypcji udostępnionym przez parafię oraz w katalogu H-10-18 (sprawdzono 2026-11-02).",
+      "deathDateConfidence": "confirmed",
+      "deathDateSource": "https://parafiajablonka.katolicki.eu/cmentarz/4181/foto/h.10.18.(2).jpg"
     },
     {
       "id": "karol-basisty-1926",
@@ -375,8 +401,7 @@
   "unresolved": [
     "Brak współrzędnych GPS wszystkich grobów.",
     "Daty życia i miejsca pochówku Józefa Pilcha (Jurgów) oraz Małgorzaty Środy (Kozy) nieustalone.",
-    "Rok śmierci Weroniki Pilch: prawdopodobnie 1946, ostatnia cyfra ucięta na nagrobku.",
-    "Dzień śmierci Anny Basisty w listopadzie 2018 nieczytelny na nagrobku."
+    "Rok śmierci Weroniki Pilch: prawdopodobnie 1946, ostatnia cyfra ucięta na nagrobku."
   ],
   "provenance": "Zdjęcia nagrobków i relacje podane przez użytkownika w rozmowie 2026-11-01. Zdjęcia nie zostały jeszcze przesłane do repozytorium. Aktualizacja 2026-11-02: dodano dwa zdjęcia grobu 003 oraz zdjęcie planu cmentarza; daty Andrzeja Pilcha seniora odczytane ze zbliżenia inskrypcji. Współrzędnych nadrukowanych na zdjęciach nie użyto do lokalizacji."
 }

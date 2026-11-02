@@ -26,6 +26,10 @@ Plan nie jest jeszcze nakładką geograficzną. Współrzędne nadrukowane na fo
 
 ## Publikacja i sprawdzanie
 
+Integralność wszystkich publikowanych zdjęć i planów jest sprawdzana na podstawie `data/asset-checksums.json` (SHA-256), zarówno przed budowaniem, jak i po pobraniu zasobów w testach strony. Po świadomej zmianie zdjęcia należy zaktualizować jego sumę kontrolną. Samo wyświetlenie obrazu przez przeglądarkę nie gwarantuje kompletności JPEG.
+
+Parafia udostępnia [wyszukiwarkę grobów](https://polskie-cmentarze.info/wyszukiwarka.php?clientId=4181) i [oryginalny plan sektora H, 1722 × 1118 px](https://parafiajablonka.katolicki.eu/cmentarz/4181/mapa_podklady/1-sektor%20h.jpg). Grób Basisty / Pilch ma oznaczenie **H-10-18**. Zdjęcie inskrypcji z serwera parafii potwierdza datę śmierci Anny Basisty: **19.11.2018**. Źródła sprawdzono 2.11.2026; odsyłacze dostępne są także w aplikacji. Plan sektora nie obejmuje całego cmentarza i nie dostarcza współrzędnych GPS.
+
 Workflow waliduje dane, tworzy katalog _site z dozwolonych plików publicznych,
 sprawdza mapę, wyszukiwanie i karty w Chromium przy szerokościach 360, 390 i 768 px,
 a następnie publikuje Pages i powtarza sprawdzenie pod adresem wdrożenia.
