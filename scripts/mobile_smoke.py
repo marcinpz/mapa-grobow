@@ -59,6 +59,18 @@ with sync_playwright() as playwright:
         page.locator('.grave button').click()
         expect(page.locator('#details')).to_contain_text('2018-11')
         expect(page.locator('#details')).to_contain_text('Andrzej Pilch')
+        expect(page.locator('#details')).to_contain_text('1875-10-30 – 1941-07-28')
+        expect(page.locator('#details img')).to_have_count(2)
+        for photo in page.locator('#details img').all():
+            photo.scroll_into_view_if_needed()
+            expect(photo).to_be_visible()
+            page.wait_for_function('(img) => img.complete && img.naturalWidth > 0', arg=photo.element_handle())
+        page.locator('#cemetery-plan summary').click()
+        expect(page.locator('#cemetery-plan a')).to_have_attribute('href', 'plans/jablonka-2026-11-02.jpg')
+        if not args.offline_map:
+            expect(page.locator('#cemetery-plan .leaflet-image-layer')).to_be_visible()
+            page.locator('#cemetery-plan .leaflet-control-zoom-in').click()
+        page.locator('#cemetery-plan summary').click()
         search.fill('Arkadiusz Antolak')
         expect(page.locator('.grave')).to_have_count(1)
         page.locator('#cemetery-filter').select_option('jablonka')

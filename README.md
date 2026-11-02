@@ -12,11 +12,17 @@ Ostatnio potwierdzony problem: Pages nie było włączone (configure-pages zwrac
 - [Dane z Orawki](data/orawka.json)
 - [Plan MVP](docs/MVP.md)
 
-Zdjęcia nagrobków czekają na import. Daty i relacje niepewne oznaczono do weryfikacji. Dane żyjących krewnych nie są umieszczane w katalogu publicznym.
+Grób Basisty / Pilch w Jabłonce ma dwa zdjęcia dodane 2.11.2026. Zbliżenie potwierdza daty Andrzeja Pilcha seniora: 30.10.1875–28.07.1941. Pozostałe zdjęcia nagrobków czekają na import. Daty niepewne oznaczono do weryfikacji.
 
 Fotografie z rozmowy przygotowano w osobnym archiwum ZIP, ale nie zostały jeszcze zaimportowane do repozytorium.
-Każdy grób ma pustą tablicę photos i photosPending: true. Dokładne współrzędne
+Groby bez zaimportowanych zdjęć mają pustą tablicę photos i photosPending: true. Dokładne współrzędne
 wszystkich grobów pozostają nieustalone; lista obsługuje oba cmentarze, a mapa nie pokazuje jeszcze pinezek.
+
+## Plan cmentarza w Jabłonce
+
+Pod mapą dostępny jest powiększany plan z fotografii tablicy z 2.11.2026 oraz link do pełnej rozdzielczości. Plik w `plans/` jest publikowany tylko wtedy, gdy wskazują go dane cmentarza. Zdjęcia mają usunięte metadane EXIF; nadrukowane informacje pozostawiono jako część materiału źródłowego.
+
+Plan nie jest jeszcze nakładką geograficzną. Współrzędne nadrukowane na fotografiach są niespójne, a zdjęcie tablicy ma zniekształcenie perspektywiczne. Dokładne nałożenie wymaga dopasowania rozpoznawalnych punktów (np. narożników ogrodzenia i skrzyżowań alejek) do ortofotomapy oraz sprawdzenia zgodności na dodatkowych punktach. Do tego czasu plan służy do odczytywania sektorów i numeracji, nie do wyznaczania GPS grobu.
 
 ## Publikacja i sprawdzanie
 

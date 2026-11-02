@@ -10,7 +10,13 @@
       "lon": 19.7006
     },
     "coordinateSource": "https://bazagrobow.pl/cmentarze/malopolskie/jablonka/cmentarz-przemienienia-panskiego-jablonka/",
-    "coordinatePrecision": "approximate-cemetery-center"
+    "coordinatePrecision": "approximate-cemetery-center",
+    "plan": {
+      "image": "plans/jablonka-2026-11-02.jpg",
+      "date": "2026-11-02",
+      "georeferenced": false,
+      "description": "Fotografia tablicy z planem cmentarza. Brak dopasowania do współrzędnych mapy; współrzędne nadrukowane na zdjęciach są niespójne."
+    }
   },
   "graves": [
     {
@@ -61,9 +67,11 @@
         "karol-basisty-1926",
         "andrzej-pilch-senior"
       ],
-      "otherInscription": "Andrzej Pilch — napis bez widocznych dat, tożsamość i charakter upamiętnienia do ustalenia",
-      "photosPending": true,
-      "photos": [],
+      "photosPending": false,
+      "photos": [
+        "photos/grave-003/front-2026-11-02.jpg",
+        "photos/grave-003/andrzej-pilch-2026-11-02.jpg"
+      ],
       "notes": "Potwierdzone przez rodzinę: Andrzej Pilch senior pochowany razem z Anną Basisty."
     },
     {
@@ -177,9 +185,12 @@
     {
       "id": "andrzej-pilch-senior",
       "name": "Andrzej Pilch",
-      "birth": null,
-      "death": null,
-      "notes": "Ojciec Stefanii Zborek z domu Pilch; pochowany w grobie 003 razem z Anną Basisty. Inna osoba niż Andrzej Pilch (1912–1981)."
+      "birth": "1875-10-30",
+      "death": "1941-07-28",
+      "notes": "Ojciec Stefanii Zborek z domu Pilch; pochowany w grobie 003 razem z Anną Basisty. Inna osoba niż Andrzej Pilch (1912–1981).",
+      "birthDateConfidence": "confirmed",
+      "deathDateConfidence": "confirmed",
+      "dateSource": "photos/grave-003/andrzej-pilch-2026-11-02.jpg"
     },
     {
       "id": "jozef-pilch",
@@ -367,5 +378,5 @@
     "Rok śmierci Weroniki Pilch: prawdopodobnie 1946, ostatnia cyfra ucięta na nagrobku.",
     "Dzień śmierci Anny Basisty w listopadzie 2018 nieczytelny na nagrobku."
   ],
-  "provenance": "Zdjęcia nagrobków i relacje podane przez użytkownika w rozmowie 2026-11-01. Zdjęcia nie zostały jeszcze przesłane do repozytorium."
+  "provenance": "Zdjęcia nagrobków i relacje podane przez użytkownika w rozmowie 2026-11-01. Zdjęcia nie zostały jeszcze przesłane do repozytorium. Aktualizacja 2026-11-02: dodano dwa zdjęcia grobu 003 oraz zdjęcie planu cmentarza; daty Andrzeja Pilcha seniora odczytane ze zbliżenia inskrypcji. Współrzędnych nadrukowanych na zdjęciach nie użyto do lokalizacji."
 }

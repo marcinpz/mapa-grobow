@@ -10,6 +10,41 @@ let draftMarker = null;
 let draftCoordinates = null;
 const markers = new Map();
 const byId = id => document.getElementById(id);
+let planMap;
+function initializePlan() {
+  const plan = dataset.cemeteries.find(c => c.id === 'jablonka')?.plan;
+  if (!plan) return;
+  const panel = element('details');
+  panel.id = 'cemetery-plan';
+  panel.append(element('summary', 'Plan cmentarza w Jabłonce — powiększ'));
+  panel.append(element('p', 'Zdjęcie tablicy z 2.11.2026. Plan można powiększać i przesuwać. Nie jest jeszcze dopasowany do współrzędnych mapy.', 'muted'));
+  const viewer = element('div');
+  viewer.style.height = '420px';
+  viewer.setAttribute('aria-label', 'Powiększany plan cmentarza w Jabłonce');
+  const link = element('a', 'Otwórz oryginalny plan w pełnej rozdzielczości');
+  link.href = plan.image;
+  link.target = '_blank';
+  link.rel = 'noopener';
+  panel.append(viewer, link);
+  byId('details').before(panel);
+  panel.addEventListener('toggle', () => {
+    if (!panel.open) return;
+    if (planMap) { planMap.invalidateSize(); return; }
+    if (!window.L) {
+      viewer.replaceChildren(element('p', 'Podgląd jest niedostępny. Otwórz oryginalny plan poniżej.'));
+      return;
+    }
+    const picture = new Image();
+    picture.onload = () => {
+      planMap = L.map(viewer, {crs: L.CRS.Simple, minZoom: -3, maxZoom: 3, scrollWheelZoom: false});
+      const bounds = [[0, 0], [picture.naturalHeight, picture.naturalWidth]];
+      L.imageOverlay(plan.image, bounds).addTo(planMap);
+      planMap.fitBounds(bounds);
+    };
+    picture.onerror = () => { viewer.textContent = 'Nie udało się wczytać planu.'; };
+    picture.src = plan.image;
+  });
+}
 const normalize = value => String(value ?? '').toLocaleLowerCase('pl').normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/ł/g, 'l').trim();
 const peopleFor = grave => grave.personIds.map(id => dataset.people.find(person => person.id === id)).filter(Boolean);
 const validGps = value => value && Number.isFinite(value.lat) && Number.isFinite(value.lon) && Math.abs(value.lat) <= 90 && Math.abs(value.lon) <= 180;
@@ -223,6 +258,7 @@ Promise.all(['jablonka', 'orawka'].map(async id => {
     updateMapForFilter();
   });
   initializeMap();
+  initializePlan();
   render(byId('search').value);
   if (dataset.graves.length) show(dataset.graves[0]);
 }).catch(error => { byId('list').textContent = error.message; });
