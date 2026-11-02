@@ -26,6 +26,36 @@
           "url": "https://polskie-cmentarze.info/wyszukiwarka.php?clientId=4181"
         }
       ]
+    },
+    "overlay": {
+      "image": "plans/jablonka-sectors-overlay.webp",
+      "bounds": [
+        [
+          49.48583900953117,
+          19.699302732115438
+        ],
+        [
+          49.487550113846055,
+          19.70277480898066
+        ]
+      ],
+      "opacity": 0.8,
+      "precision": "approximate-imagery-alignment",
+      "attribution": "Plan: Parafia Przemienienia Pańskiego w Jabłonce",
+      "source": "https://www.parafiajablonka.katolicki.eu/index.php/parafia/cmentarz-wirtualny.html",
+      "sectors": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F",
+        "G",
+        "H",
+        "J",
+        "K",
+        "L"
+      ]
     }
   },
   "graves": [

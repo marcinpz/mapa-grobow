@@ -11,6 +11,59 @@ let draftCoordinates = null;
 const markers = new Map();
 const byId = id => document.getElementById(id);
 let planMap;
+let sectorOverlay;
+let sectorOverlayBounds;
+let overlayEnabled = true;
+function focusCemetery(id) {
+  if (!map) return;
+  if (id === 'jablonka' && sectorOverlayBounds) map.fitBounds(sectorOverlayBounds, {padding: [8, 8]});
+  else if (cemeteryCenters.has(id)) map.setView(cemeteryCenters.get(id), 18);
+}
+function updateOverlay() {
+  if (!sectorOverlay || !map) return;
+  const visible = cemeteryFilter !== 'orawka';
+  byId('overlay-controls').hidden = !visible;
+  if (visible && overlayEnabled) sectorOverlay.addTo(map);
+  else map.removeLayer(sectorOverlay);
+}
+function initializeOverlay() {
+  const config = dataset.cemeteries.find(c => c.id === 'jablonka')?.overlay;
+  if (!map || !config) return;
+  sectorOverlayBounds = L.latLngBounds(config.bounds);
+  sectorOverlay = L.imageOverlay(config.image, sectorOverlayBounds, {
+    opacity: config.opacity, attribution: config.attribution, interactive: false
+  });
+  sectorOverlay.on('error', () => { byId('overlay-status').textContent = 'Nie udało się wczytać planu. Możesz nadal korzystać ze zdjęć satelitarnych.'; });
+  const controls = element('section');
+  controls.id = 'overlay-controls';
+  controls.setAttribute('aria-label', 'Plan sektorów');
+  const toggle = element('button', 'Ukryj plan sektorów');
+  toggle.id = 'overlay-toggle';
+  toggle.type = 'button';
+  toggle.setAttribute('aria-pressed', 'true');
+  toggle.onclick = () => {
+    overlayEnabled = !overlayEnabled;
+    toggle.textContent = overlayEnabled ? 'Ukryj plan sektorów' : 'Pokaż plan sektorów';
+    toggle.setAttribute('aria-pressed', String(overlayEnabled));
+    updateOverlay();
+  };
+  const label = element('label', 'Widoczność planu ');
+  label.htmlFor = 'overlay-opacity';
+  const slider = element('input');
+  slider.id = 'overlay-opacity';
+  slider.type = 'range'; slider.min = '0'; slider.max = '100'; slider.step = '5';
+  slider.value = String(config.opacity * 100);
+  const value = element('output', slider.value + '%');
+  value.htmlFor = slider.id;
+  slider.oninput = () => { sectorOverlay.setOpacity(Number(slider.value)/100); value.textContent = slider.value + '%'; };
+  label.append(value);
+  const status = element('p', 'Plan parafialny: 11 sektorów. Dopasowanie orientacyjne do zdjęć satelitarnych.', 'muted');
+  status.id = 'overlay-status';
+  status.setAttribute('role', 'status');
+  controls.append(toggle, label, slider, status);
+  byId('map').parentElement.after(controls);
+  updateOverlay();
+}
 function appendSources(parent, sources) {
   for (const source of sources || []) {
     if (!/^https:\/\//i.test(source.url)) continue;
@@ -72,16 +125,19 @@ function initializeMap() {
     byId('map').textContent = 'Mapa jest niedostępna. Lista i karty grobów nadal działają.';
     return;
   }
-  map = L.map('map').setView([49.50, 19.71], 12);
+  map = L.map('map', {maxZoom: 21}).setView([49.50, 19.71], 12);
   const streets = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 19, attribution: '© OpenStreetMap contributors'
-  }).addTo(map);
-  const aerial = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
-    maxZoom: 19, maxNativeZoom: 19,
-    attribution: 'Imagery © Esri, Maxar, Earthstar Geographics, GIS User Community'
   });
+  const aerial = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+    maxZoom: 21, maxNativeZoom: 19,
+    attribution: 'Imagery © Esri, Maxar, Earthstar Geographics, GIS User Community'
+  }).addTo(map);
   const layerToggle = byId('basemap-toggle');
-  let aerialActive = false;
+  let aerialActive = true;
+  layerToggle.textContent = '🗺️ Mapa';
+  layerToggle.setAttribute('aria-pressed', 'true');
+  layerToggle.title = 'Przełącz na mapę OpenStreetMap';
   layerToggle.addEventListener('click', () => {
     aerialActive = !aerialActive;
     if (aerialActive) {
@@ -104,6 +160,7 @@ function initializeMap() {
     ).addTo(map);
     cemeteryMarkers.set(cemetery.id, marker);
   }
+  initializeOverlay();
   updateMapForFilter();
   map.on('click', event => {
     if (!editMode || !selectedGrave) return;
@@ -127,12 +184,13 @@ function initializeMap() {
 }
 function updateMapForFilter() {
   if (!map) return;
+  updateOverlay();
   for (const [id, marker] of cemeteryMarkers) {
     if (cemeteryFilter === 'all' || cemeteryFilter === id) marker.addTo(map);
     else map.removeLayer(marker);
   }
   if (cemeteryFilter !== 'all' && cemeteryCenters.has(cemeteryFilter)) {
-    map.setView(cemeteryCenters.get(cemeteryFilter), 18);
+    focusCemetery(cemeteryFilter);
   } else if (cemeteryCenters.size > 1) {
     map.fitBounds([...cemeteryCenters.values()], {padding: [25, 25]});
   }
@@ -211,7 +269,7 @@ function show(grave, moveFocus = false) {
     if (map) map.setView([gps.lat, gps.lon], 18);
   } else {
     details.append(element('p', 'Dokładne współrzędne grobu nieustalone. Znacznik na mapie wskazuje tylko cmentarz.', 'muted'));
-    if (map && cemeteryCenters.has(grave.cemeteryId)) map.setView(cemeteryCenters.get(grave.cemeteryId), 18);
+    focusCemetery(grave.cemeteryId);
   }
   const editButton = element('button', 'Zaznacz położenie grobu');
   editButton.type = 'button';

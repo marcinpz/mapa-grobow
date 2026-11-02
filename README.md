@@ -22,7 +22,11 @@ wszystkich grobów pozostają nieustalone; lista obsługuje oba cmentarze, a map
 
 Pod mapą dostępny jest powiększany plan z fotografii tablicy z 2.11.2026 oraz link do pełnej rozdzielczości. Plik w `plans/` jest publikowany tylko wtedy, gdy wskazują go dane cmentarza. Zdjęcia mają usunięte metadane EXIF; nadrukowane informacje pozostawiono jako część materiału źródłowego.
 
-Plan nie jest jeszcze nakładką geograficzną. Współrzędne nadrukowane na fotografiach są niespójne, a zdjęcie tablicy ma zniekształcenie perspektywiczne. Dokładne nałożenie wymaga dopasowania rozpoznawalnych punktów (np. narożników ogrodzenia i skrzyżowań alejek) do ortofotomapy oraz sprawdzenia zgodności na dodatkowych punktach. Do tego czasu plan służy do odczytywania sektorów i numeracji, nie do wyznaczania GPS grobu.
+Domyślny widok głównej mapy to zdjęcia satelitarne Esri z nakładką 11 oryginalnych sektorów parafii (A–H, J–L). Przycisk pod mapą ukrywa plan, a suwak reguluje jego widoczność. Nakładka znika po wybraniu Orawki. Można powiększyć plan do poziomu 21; szczegółowość zdjęć Esri ograniczona jest do poziomu 19.
+
+Nakładka `plans/jablonka-sectors-overlay.webp` powstała przez dopasowanie sektorów do wspólnego podkładu parafialnego (SIFT/RANSAC), a następnie orientacyjne dopasowanie sześciu punktów ogrodzenia i alejek do zdjęć Esri w Web Mercator. Parametry i reszty dopasowania zapisano w `docs/overlay-alignment.json`. Reszty punktów kontrolnych wynoszą około 2–12 pikseli obrazu referencyjnego; nie są niezależnym pomiarem dokładności GPS. Plan jest orientacyjny i nie potwierdza współrzędnych grobów. Fotografia tablicy pozostaje osobnym materiałem źródłowym.
+
+Źródła sektorów: `https://parafiajablonka.katolicki.eu/cmentarz/4181/mapa_podklady/1-sektor%20{litera}.jpg` (małe litery a–h, j–l). Podkład do wspólnego dopasowania: `https://parafiajablonka.katolicki.eu/cmentarz/4181/mapa_podklady/cmentarz/h_polygon.jpg`. Nakładka zawiera wyłącznie plan parafii; obraz referencyjny Esri nie jest publikowany w repozytorium. Atrybucja planu i warstwy satelitarnej widoczna jest na mapie.
 
 ## Publikacja i sprawdzanie
 

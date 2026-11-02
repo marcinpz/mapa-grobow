@@ -19,6 +19,15 @@ for person in people.values():
 photos = set()
 plans = set()
 for data in datasets:
+    overlay = data['cemetery'].get('overlay')
+    if overlay:
+        path = overlay['image']
+        assert re.fullmatch(r'plans/[a-zA-Z0-9_-]+\.(?:jpe?g|png|webp)', path, re.I), 'Unsafe overlay path'
+        assert (ROOT / path).is_file(), 'Missing overlay image'
+        bounds = overlay['bounds']
+        assert len(bounds) == 2 and all(len(point) == 2 for point in bounds), 'Invalid overlay bounds'
+        assert -90 < bounds[0][0] < bounds[1][0] < 90 and -180 < bounds[0][1] < bounds[1][1] < 180, 'Invalid overlay extent'
+        plans.add(path)
     plan = data['cemetery'].get('plan')
     if plan:
         path = plan['image']
