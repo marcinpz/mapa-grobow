@@ -72,8 +72,10 @@ with sync_playwright() as playwright:
         page.get_by_role('button', name='Zobacz szczegóły: Chrustek / Pilch', exact=True).click()
         expect(page.locator('#details h2')).to_have_text('Chrustek / Pilch')
         assert page.locator('#details h2').evaluate('(el) => el.getBoundingClientRect().top') < 844
-        expect(page.locator('#details')).to_contain_text('Zdjęcie nagrobka czeka')
-        expect(page.locator('#details a')).to_have_count(0)
+        expect(page.locator('#details img')).to_have_count(2)
+        expect(page.locator('#details')).to_contain_text('2003-05-21')
+        expect(page.locator('#details')).to_contain_text('1940-11-02')
+        expect(page.locator('.grave img')).to_have_count(1)
         search.fill('Anna Basisty')
         expect(page.locator('.grave')).to_have_count(1)
         page.locator('.grave button').click()

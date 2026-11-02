@@ -63,8 +63,11 @@
       "id": "grave-001",
       "label": "Zborek",
       "location": {
-        "description": "Pierwszy rząd od góry, przy ogrodzeniu",
-        "coordinates": null
+        "description": "Pierwszy rząd od góry, przy ogrodzeniu; katalog parafialny: L-12-9",
+        "coordinates": null,
+        "sector": "L",
+        "row": "12",
+        "number": "9"
       },
       "personIds": [
         "stefan-zborek-1904",
@@ -73,15 +76,32 @@
       "adjacentGraveIds": [
         "grave-002"
       ],
-      "photosPending": true,
-      "photos": []
+      "photosPending": false,
+      "photos": [
+        "photos/grave-001/parish-1.jpg",
+        "photos/grave-001/parish-2.jpg"
+      ],
+      "photoCredit": "Parafia Przemienienia Pańskiego w Jabłonce — katalog cmentarny; data wykonania niepodana.",
+      "sources": [
+        {
+          "label": "Zdjęcie 1 — źródło parafialne",
+          "url": "https://parafiajablonka.katolicki.eu/cmentarz/4181/foto/l.12.9.jpg"
+        },
+        {
+          "label": "Zdjęcie 2 — źródło parafialne",
+          "url": "https://parafiajablonka.katolicki.eu/cmentarz/4181/foto/l.12.9.(2).jpg"
+        }
+      ]
     },
     {
       "id": "grave-002",
       "label": "Burtan / Pilch",
       "location": {
-        "description": "Pierwszy rząd od góry, na lewo od grobu 001 patrząc od alejki",
-        "coordinates": null
+        "description": "Pierwszy rząd od góry, na lewo od grobu 001 patrząc od alejki; katalog parafialny: L-12-10",
+        "coordinates": null,
+        "sector": "L",
+        "row": "12",
+        "number": "10"
       },
       "personIds": [
         "kazimierz-burtan-1880",
@@ -92,8 +112,22 @@
       "adjacentGraveIds": [
         "grave-001"
       ],
-      "photosPending": true,
-      "photos": []
+      "photosPending": false,
+      "photos": [
+        "photos/grave-002/parish-1.jpg",
+        "photos/grave-002/parish-2.jpg"
+      ],
+      "photoCredit": "Parafia Przemienienia Pańskiego w Jabłonce — katalog cmentarny; data wykonania niepodana.",
+      "sources": [
+        {
+          "label": "Zdjęcie 1 — źródło parafialne",
+          "url": "https://parafiajablonka.katolicki.eu/cmentarz/4181/foto/l.12.10.jpg"
+        },
+        {
+          "label": "Zdjęcie 2 — źródło parafialne",
+          "url": "https://parafiajablonka.katolicki.eu/cmentarz/4181/foto/l.12.10.(2).jpg"
+        }
+      ]
     },
     {
       "id": "grave-003",
@@ -132,28 +166,62 @@
       "id": "grave-004",
       "label": "Chrustek / Pilch",
       "location": {
-        "description": "Cmentarz Jabłonka; dokładne położenie nieustalone",
-        "coordinates": null
+        "description": "Cmentarz Jabłonka; dokładne położenie nieustalone; katalog parafialny: H-7-23",
+        "coordinates": null,
+        "sector": "H",
+        "row": "7",
+        "number": "23"
       },
       "personIds": [
         "jozefina-chrustek-1923",
         "weronika-pilch"
       ],
-      "photosPending": true,
-      "photos": []
+      "photosPending": false,
+      "photos": [
+        "photos/grave-004/parish-1.jpg",
+        "photos/grave-004/parish-2.jpg"
+      ],
+      "photoCredit": "Parafia Przemienienia Pańskiego w Jabłonce — katalog cmentarny; data wykonania niepodana.",
+      "sources": [
+        {
+          "label": "Zdjęcie 1 — źródło parafialne",
+          "url": "https://parafiajablonka.katolicki.eu/cmentarz/4181/foto/h.7.23.jpg"
+        },
+        {
+          "label": "Zdjęcie 2 — źródło parafialne",
+          "url": "https://parafiajablonka.katolicki.eu/cmentarz/4181/foto/h.7.23.(2).jpg"
+        }
+      ]
     },
     {
       "id": "grave-005",
       "label": "Antoni Zborek",
       "location": {
-        "description": "Cmentarz Jabłonka; dokładne położenie nieustalone",
-        "coordinates": null
+        "description": "Cmentarz Jabłonka; dokładne położenie nieustalone; katalog parafialny: A-11-1",
+        "coordinates": null,
+        "sector": "A",
+        "row": "11",
+        "number": "1"
       },
       "personIds": [
         "antoni-zborek-1943"
       ],
-      "photosPending": true,
-      "photos": []
+      "photosPending": false,
+      "photos": [
+        "photos/grave-005/parish-1.jpg",
+        "photos/grave-005/parish-2.jpg"
+      ],
+      "photoCredit": "Parafia Przemienienia Pańskiego w Jabłonce — katalog cmentarny; data wykonania niepodana.",
+      "sources": [
+        {
+          "label": "Zdjęcie 1 — źródło parafialne",
+          "url": "https://parafiajablonka.katolicki.eu/cmentarz/4181/foto/a.11.1.jpg"
+        },
+        {
+          "label": "Zdjęcie 2 — źródło parafialne",
+          "url": "https://parafiajablonka.katolicki.eu/cmentarz/4181/foto/a.11.1.(2).jpg"
+        }
+      ]
     }
   ],
   "people": [
@@ -219,17 +287,20 @@
       "id": "jozefina-chrustek-1923",
       "name": "Józefina Chrustek",
       "birth": "1923-01-02",
-      "death": "2003-03-24",
+      "death": "2003-05-21",
       "birthSurname": "Pilch",
-      "notes": "Siostra Stefanii Zborek z domu Pilch (potwierdzone przez rodzinę)."
+      "notes": "Data śmierci potwierdzona na zdjęciu inskrypcji z katalogu parafii (H-7-23), sprawdzono 2026-11-02.",
+      "deathDateConfidence": "confirmed",
+      "deathDateSource": "photos/grave-004/parish-2.jpg"
     },
     {
       "id": "weronika-pilch",
       "name": "Weronika Pilch",
       "birth": "1887-01-19",
-      "death": "1946-11-02",
-      "notes": "Żona Andrzeja Pilcha seniora, matka siedmiorga dzieci. Data śmierci 2.11.1946 prawdopodobna; ostatnia cyfra roku na nagrobku ucięta, wymaga weryfikacji.",
-      "deathDateConfidence": "uncertain"
+      "death": "1940-11-02",
+      "notes": "Data śmierci potwierdzona na zdjęciu inskrypcji z katalogu parafii (H-7-23), sprawdzono 2026-11-02.",
+      "deathDateConfidence": "confirmed",
+      "deathDateSource": "photos/grave-004/parish-2.jpg"
     },
     {
       "id": "antoni-zborek-1943",
@@ -430,8 +501,7 @@
   ],
   "unresolved": [
     "Brak współrzędnych GPS wszystkich grobów.",
-    "Daty życia i miejsca pochówku Józefa Pilcha (Jurgów) oraz Małgorzaty Środy (Kozy) nieustalone.",
-    "Rok śmierci Weroniki Pilch: prawdopodobnie 1946, ostatnia cyfra ucięta na nagrobku."
+    "Daty życia i miejsca pochówku Józefa Pilcha (Jurgów) oraz Małgorzaty Środy (Kozy) nieustalone."
   ],
   "provenance": "Zdjęcia nagrobków i relacje podane przez użytkownika w rozmowie 2026-11-01. Zdjęcia nie zostały jeszcze przesłane do repozytorium. Aktualizacja 2026-11-02: dodano dwa zdjęcia grobu 003 oraz zdjęcie planu cmentarza; daty Andrzeja Pilcha seniora odczytane ze zbliżenia inskrypcji. Współrzędnych nadrukowanych na zdjęciach nie użyto do lokalizacji."
 }

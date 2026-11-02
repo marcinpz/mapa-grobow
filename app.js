@@ -249,6 +249,7 @@ function show(grave, moveFocus = false) {
   if (grave.otherInscription) details.append(element('p', grave.otherInscription, 'muted'));
   appendSources(details, grave.sources);
   const photos = grave.photos || [];
+  if (grave.photoCredit) details.append(element('p', grave.photoCredit, 'muted'));
   if (!photos.length) details.append(element('p', 'Zdjęcie nagrobka czeka na dodanie.', 'muted'));
   for (const source of photos) {
     if (!/^photos\/[a-zA-Z0-9/_-]+\.(jpe?g|png|webp)$/i.test(source) || source.includes('..')) continue;
@@ -306,6 +307,14 @@ function render(query = '') {
     button.setAttribute('aria-label', 'Zobacz szczegóły: ' + grave.label);
     button.onclick = () => show(grave, true);
     card.append(element('h3', grave.label), element('p', grave.cemeteryName), element('p', peopleFor(grave).map(person => person.name).join(' · ')), button);
+    if (grave.photos?.length && /^photos\/[a-zA-Z0-9/_-]+\.(jpe?g|png|webp)$/i.test(grave.photos[0])) {
+      const thumbnail = element('img', undefined, 'photo');
+      thumbnail.alt = 'Nagrobek: ' + grave.label;
+      thumbnail.src = completeImageUrl(grave.photos[0]);
+      thumbnail.loading = 'lazy';
+      thumbnail.addEventListener('error', () => thumbnail.remove());
+      card.insertBefore(thumbnail, button);
+    }
     list.append(card);
   }
   if (!filtered.length) list.append(element('p', 'Brak wyników. Zmień wyszukiwanie.'));

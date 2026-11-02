@@ -12,7 +12,7 @@ Ostatnio potwierdzony problem: Pages nie było włączone (configure-pages zwrac
 - [Dane z Orawki](data/orawka.json)
 - [Plan MVP](docs/MVP.md)
 
-Grób Basisty / Pilch w Jabłonce ma dwa zdjęcia dodane 2.11.2026. Zbliżenie potwierdza daty Andrzeja Pilcha seniora: 30.10.1875–28.07.1941. Pozostałe zdjęcia nagrobków czekają na import. Daty niepewne oznaczono do weryfikacji.
+Wszystkie pięć grobów w Jabłonce ma zdjęcia: łącznie 10 fotografii, w tym osiem z katalogu parafii i dwa zdjęcia użytkownika. Miniatury widać na liście, pełne zdjęcia i źródła w szczegółach. Zdjęcia Orawki czekają na import. Daty niepewne oznaczono do weryfikacji.
 
 Fotografie z rozmowy przygotowano w osobnym archiwum ZIP, ale nie zostały jeszcze zaimportowane do repozytorium.
 Groby bez zaimportowanych zdjęć mają pustą tablicę photos i photosPending: true. Dokładne współrzędne
