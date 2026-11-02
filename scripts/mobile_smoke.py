@@ -86,8 +86,10 @@ with sync_playwright() as playwright:
             photo.scroll_into_view_if_needed()
             expect(photo).to_be_visible()
             page.wait_for_function('(img) => img.complete && img.naturalWidth > 0', arg=photo.element_handle())
+            assert '?v=complete-20261102' in photo.get_attribute('src')
+            assert photo.evaluate('(img) => Math.abs(img.getBoundingClientRect().height / img.getBoundingClientRect().width - img.naturalHeight / img.naturalWidth) < 0.01'), 'Photo aspect ratio was cropped'
         page.locator('#cemetery-plan summary').click()
-        expect(page.locator('#cemetery-plan a').first).to_have_attribute('href', 'plans/jablonka-2026-11-02.jpg')
+        expect(page.locator('#cemetery-plan a').first).to_have_attribute('href', 'plans/jablonka-2026-11-02.jpg?v=complete-20261102')
         expect(page.get_by_role('link', name='Oryginalny plan sektora H', exact=False)).to_be_visible()
         if not args.offline_map:
             expect(page.locator('#cemetery-plan .leaflet-image-layer')).to_be_visible()

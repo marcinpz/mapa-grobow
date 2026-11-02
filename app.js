@@ -10,6 +10,8 @@ let draftMarker = null;
 let draftCoordinates = null;
 const markers = new Map();
 const byId = id => document.getElementById(id);
+// New URL avoids cached, truncated JPEGs from the first publication.
+const completeImageUrl = source => source + '?v=complete-20261102';
 let planMap;
 let sectorOverlay;
 let sectorOverlayBounds;
@@ -87,7 +89,7 @@ function initializePlan() {
   viewer.style.height = '420px';
   viewer.setAttribute('aria-label', 'Powiększany plan cmentarza w Jabłonce');
   const link = element('a', 'Otwórz oryginalny plan w pełnej rozdzielczości');
-  link.href = plan.image;
+  link.href = completeImageUrl(plan.image);
   link.target = '_blank';
   link.rel = 'noopener';
   panel.append(viewer, link);
@@ -104,11 +106,11 @@ function initializePlan() {
     picture.onload = () => {
       planMap = L.map(viewer, {crs: L.CRS.Simple, minZoom: -3, maxZoom: 3, scrollWheelZoom: false});
       const bounds = [[0, 0], [picture.naturalHeight, picture.naturalWidth]];
-      L.imageOverlay(plan.image, bounds).addTo(planMap);
+      L.imageOverlay(completeImageUrl(plan.image), bounds).addTo(planMap);
       planMap.fitBounds(bounds);
     };
     picture.onerror = () => { viewer.textContent = 'Nie udało się wczytać planu.'; };
-    picture.src = plan.image;
+    picture.src = completeImageUrl(plan.image);
   });
 }
 const normalize = value => String(value ?? '').toLocaleLowerCase('pl').normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/ł/g, 'l').trim();
@@ -253,9 +255,16 @@ function show(grave, moveFocus = false) {
     const photo = element('img', undefined, 'photo');
     photo.alt = 'Nagrobek: ' + grave.label;
     photo.loading = 'lazy';
-    photo.src = source;
+    photo.src = completeImageUrl(source);
     photo.addEventListener('error', () => photo.replaceWith(element('p', 'Nie udało się wczytać zdjęcia.', 'muted')));
     details.append(photo);
+    const fullPhoto = element('a', 'Otwórz pełne zdjęcie');
+    fullPhoto.href = completeImageUrl(source);
+    fullPhoto.target = '_blank';
+    fullPhoto.rel = 'noopener';
+    const photoLink = element('p');
+    photoLink.append(fullPhoto);
+    details.append(photoLink);
   }
   const gps = grave.location?.coordinates;
   if (validGps(gps)) {
