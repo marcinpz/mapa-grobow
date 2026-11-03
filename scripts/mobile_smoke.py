@@ -49,7 +49,9 @@ with sync_playwright() as playwright:
             page.locator('.leaflet-control-zoom-in').click()
             expect(page.locator('#map .leaflet-control-attribution')).to_contain_text('Esri')
             page.wait_for_function('map.getZoom() >= 11')
-            expect(page.locator('.leaflet-marker-icon')).to_have_count(4)
+            expect(page.locator('.leaflet-marker-icon')).to_have_count(7)
+            assert page.evaluate('markers.size') == 5
+            assert page.evaluate("dataset.graves.filter(g => g.cemeteryId === 'jablonka').every(g => sectorOverlayBounds.contains(markers.get(g.id).getLatLng()))")
             assert page.evaluate("markers.has('grave-001') && markers.has('grave-002')")
             assert 1 < page.evaluate("markers.get('grave-001').getLatLng().distanceTo(markers.get('grave-002').getLatLng())") < 5
             expect(page.locator('#details')).to_contain_text('bez pomiaru GPS')
@@ -74,6 +76,10 @@ with sync_playwright() as playwright:
         expect(page.locator('.grave')).to_have_count(1)
         page.get_by_role('button', name='Zobacz szczegóły: Chrustek / Pilch', exact=True).click()
         expect(page.locator('#details h2')).to_have_text('Chrustek / Pilch')
+        expect(page.locator('#details')).to_contain_text('H-7-23')
+        expect(page.locator('#details')).to_contain_text('bez pomiaru GPS')
+        if not args.offline_map:
+            page.wait_for_function("map.getCenter().distanceTo(markers.get('grave-004').getLatLng()) < 1")
         assert page.locator('#details h2').evaluate('(el) => el.getBoundingClientRect().top') < 844
         expect(page.locator('#details img')).to_have_count(2)
         expect(page.locator('#details')).to_contain_text('2003-05-21')

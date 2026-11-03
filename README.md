@@ -5,8 +5,7 @@ Publiczny katalog grobów z mapą OpenStreetMap. Prywatne relacje rodzinne przec
 ## Status
 Statyczna aplikacja obejmuje 11 grobów: pięć w Jabłonce i sześć w Orawce, filtr cmentarza, wyszukiwarkę i karty nagrobków.
 Adres docelowy: https://marcinpz.github.io/mapa-grobow/.
-Publikacja wymaga włączenia Settings → Pages → Source: GitHub Actions.
-Ostatnio potwierdzony problem: Pages nie było włączone (configure-pages zwracało 404).
+Strona jest publikowana przez GitHub Actions do GitHub Pages.
 
 - [Dane z Jabłonki](data/jablonka.json)
 - [Dane z Orawki](data/orawka.json)
@@ -16,7 +15,9 @@ Wszystkie pięć grobów w Jabłonce ma zdjęcia: łącznie 10 fotografii, w tym
 
 Fotografie z rozmowy przygotowano w osobnym archiwum ZIP, ale nie zostały jeszcze zaimportowane do repozytorium.
 Groby bez zaimportowanych zdjęć mają pustą tablicę photos i photosPending: true. Dokładne współrzędne
-wszystkich grobów pozostają nieustalone; lista obsługuje oba cmentarze, a mapa nie pokazuje jeszcze pinezek.
+grobów nie pochodzą z pomiaru GPS. Wszystkie pięć grobów Jabłonki ma znaczniki oszacowane z numerowanych planów parafii: L-12-9, L-12-10, H-10-18, H-7-23 i A-11-1. Sześć grobów Orawki nadal wymaga ustalenia pozycji; mapa wskazuje tam tylko cmentarz.
+
+Pozycje Jabłonki odtwarza `python scripts/locate_jablonka.py`: środki grobów na oryginalnych obrazach sektorów są przeliczane macierzami z `docs/overlay-alignment.json`. Rekordy zachowują źródło, piksel planu i oznaczenie przybliżonej dokładności.
 
 ## Plan cmentarza w Jabłonce
 

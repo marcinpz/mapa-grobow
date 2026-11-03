@@ -154,11 +154,20 @@
       "label": "Basisty / Pilch",
       "location": {
         "description": "Sektor H, rząd 10, grób 18 (H-10-18); katalog parafialny",
-        "coordinates": null,
+        "coordinates": {
+          "lat": 49.48655199,
+          "lon": 19.70099728
+        },
         "sector": "H",
         "row": "10",
         "number": "18",
-        "source": "https://polskie-cmentarze.info/fara_cme/maps-controllers/leaflet/ver-2/?graveId=934&container=4181"
+        "source": "https://parafiajablonka.katolicki.eu/cmentarz/4181/mapa_podklady/1-sektor%20h.jpg",
+        "precision": "estimated-from-parish-plan",
+        "planPixel": [
+          407,
+          493
+        ],
+        "coordinateNote": "Położenie odczytane z numerowanego planu parafii i przeliczone według dopasowania nakładki. Przybliżone współrzędne, bez pomiaru GPS."
       },
       "personIds": [
         "anna-basisty-1925",
@@ -186,11 +195,21 @@
       "id": "grave-004",
       "label": "Chrustek / Pilch",
       "location": {
-        "description": "Cmentarz Jabłonka; dokładne położenie nieustalone; katalog parafialny: H-7-23",
-        "coordinates": null,
+        "description": "Sektor H, rząd 7, grób 23 (H-7-23); katalog parafialny",
+        "coordinates": {
+          "lat": 49.48659592,
+          "lon": 19.70091871
+        },
         "sector": "H",
         "row": "7",
-        "number": "23"
+        "number": "23",
+        "precision": "estimated-from-parish-plan",
+        "source": "https://parafiajablonka.katolicki.eu/cmentarz/4181/mapa_podklady/1-sektor%20h.jpg",
+        "planPixel": [
+          294,
+          474
+        ],
+        "coordinateNote": "Położenie odczytane z numerowanego planu parafii i przeliczone według dopasowania nakładki. Przybliżone współrzędne, bez pomiaru GPS."
       },
       "personIds": [
         "jozefina-chrustek-1923",
@@ -217,11 +236,21 @@
       "id": "grave-005",
       "label": "Antoni Zborek",
       "location": {
-        "description": "Cmentarz Jabłonka; dokładne położenie nieustalone; katalog parafialny: A-11-1",
-        "coordinates": null,
+        "description": "Sektor A, rząd 11, grób 1 (A-11-1); katalog parafialny",
+        "coordinates": {
+          "lat": 49.48669994,
+          "lon": 19.70029344
+        },
         "sector": "A",
         "row": "11",
-        "number": "1"
+        "number": "1",
+        "precision": "estimated-from-parish-plan",
+        "source": "https://parafiajablonka.katolicki.eu/cmentarz/4181/mapa_podklady/1-sektor%20a.jpg",
+        "planPixel": [
+          658,
+          78
+        ],
+        "coordinateNote": "Położenie odczytane z numerowanego planu parafii i przeliczone według dopasowania nakładki. Przybliżone współrzędne, bez pomiaru GPS."
       },
       "personIds": [
         "antoni-zborek-1943"
@@ -520,7 +549,7 @@
     }
   ],
   "unresolved": [
-    "Brak pomiarów GPS grobów; pozycje L-12-9 i L-12-10 oszacowano z planu parafii.",
+    "Pozycje wszystkich pięciu grobów oszacowano z planów parafii. Brak pomiarów GPS.",
     "Daty życia i miejsca pochówku Józefa Pilcha (Jurgów) oraz Małgorzaty Środy (Kozy) nieustalone."
   ],
   "provenance": "Zdjęcia nagrobków i relacje podane przez użytkownika w rozmowie 2026-11-01. Zdjęcia nie zostały jeszcze przesłane do repozytorium. Aktualizacja 2026-11-02: dodano dwa zdjęcia grobu 003 oraz zdjęcie planu cmentarza; daty Andrzeja Pilcha seniora odczytane ze zbliżenia inskrypcji. Współrzędnych nadrukowanych na zdjęciach nie użyto do lokalizacji."
