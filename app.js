@@ -193,6 +193,7 @@ function openGrave(grave) {
     controls.append(previous,count,next); controls.hidden=photos.length<2;
     stage.append(photo,controls,full); update();
   } else stage.append(placeholder());
+  if (grave.photoCaption) stage.append(element('p', grave.photoCaption, 'muted'));
   const info=element('section',undefined,'detail-info');
   info.append(element('p',grave.cemeteryLocality+' · '+locationLabel(grave),'eyebrow'));
   const title=element('h2',grave.label);title.id='grave-title';info.append(title);

@@ -311,6 +311,47 @@
           "label": "Zdjęcie archiwalne grobu A-2-10",
           "url": "https://parafiajablonka.katolicki.eu/cmentarz/4181/foto/a.2.10.jpg"
         }
+      ],
+      "photoCaption": "Zdjęcie archiwalne, jeszcze bez tablicy Józefa Sączka. Jego pochówek potwierdza katalog parafialny."
+    },
+    {
+      "id": "grave-007",
+      "label": "Florian Helegda",
+      "location": {
+        "description": "Sektor A, rząd 2, grób 14 (A-2-14); katalog parafialny",
+        "sector": "A",
+        "row": "2",
+        "number": "14",
+        "coordinates": {
+          "lat": 49.48665771,
+          "lon": 19.69976378
+        },
+        "precision": "estimated-from-parish-plan",
+        "source": "https://parafiajablonka.katolicki.eu/cmentarz/4181/mapa_podklady/1-sektor%20a.jpg",
+        "planPixel": [
+          265,
+          397
+        ],
+        "coordinateNote": "Położenie odczytane z numerowanego planu parafii i przeliczone według dopasowania nakładki. Przybliżone współrzędne, bez pomiaru GPS."
+      },
+      "personIds": [
+        "florian-helegda-1963"
+      ],
+      "photosPending": false,
+      "photos": [
+        "photos/grave-007/parish-1.jpg"
+      ],
+      "photoCaption": "Zdjęcie archiwalne miejsca A-2-14, jeszcze bez nagrobka. Aktualne zdjęcie grobu Floriana nie jest dostępne w katalogu.",
+      "photoCredit": "Parafia Przemienienia Pańskiego w Jabłonce — zdjęcie archiwalne miejsca; data wykonania niepodana. Dane Floriana Helegdy pochodzą z katalogu, nie ze zdjęcia.",
+      "sources": [
+        {
+          "label": "Katalog parafialny — wyszukaj Helegda, Florian; A-2-14",
+          "url": "https://polskie-cmentarze.info/wyszukiwarka.php?clientId=4181"
+        },
+        {
+          "label": "Archiwalne zdjęcie miejsca A-2-14",
+          "url": "https://parafiajablonka.katolicki.eu/cmentarz/4181/foto/a.2.14.jpg"
+        }
       ]
     }
   ],
@@ -442,6 +483,13 @@
       "name": "Joanna Sączek",
       "birth": "1904-09-29",
       "death": "1981-03-03",
+      "dateSource": "https://polskie-cmentarze.info/wyszukiwarka.php?clientId=4181"
+    },
+    {
+      "id": "florian-helegda-1963",
+      "name": "Florian Helegda",
+      "birth": "1963-05-04",
+      "death": "2025-06-16",
       "dateSource": "https://polskie-cmentarze.info/wyszukiwarka.php?clientId=4181"
     }
   ],
