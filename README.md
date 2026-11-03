@@ -21,7 +21,7 @@ Pozycje Jabłonki odtwarza `python scripts/locate_jablonka.py`: środki grobów 
 
 ## Plan cmentarza w Jabłonce
 
-Pod mapą dostępny jest powiększany plan z fotografii tablicy z 2.11.2026 oraz link do pełnej rozdzielczości. Plik w `plans/` jest publikowany tylko wtedy, gdy wskazują go dane cmentarza. Zdjęcia mają usunięte metadane EXIF; nadrukowane informacje pozostawiono jako część materiału źródłowego.
+Fotografia tablicy z 2.11.2026 pozostaje w zasobach źródłowych; interfejs mapy korzysta z nakładki planów sektorów. Plik w `plans/` jest publikowany tylko wtedy, gdy wskazują go dane cmentarza. Zdjęcia mają usunięte metadane EXIF; nadrukowane informacje pozostawiono jako część materiału źródłowego.
 
 Domyślny widok głównej mapy to zdjęcia satelitarne Esri z nakładką 11 oryginalnych sektorów parafii (A–H, J–L). Przycisk pod mapą ukrywa plan, a suwak reguluje jego widoczność. Nakładka znika po wybraniu Orawki. Można powiększyć plan do poziomu 21; szczegółowość zdjęć Esri ograniczona jest do poziomu 19.
 
@@ -59,8 +59,8 @@ Projekt ma dwa niezależne repozytoria:
 
 **Reguła przepływu:** prywatne repo może odwoływać się do publicznych identyfikatorów grobów i osób; publiczne repo **nigdy** nie pobiera ani nie publikuje prywatnych danych. Repo prywatne nie jest submodułem ani zależnością aplikacji Pages. Szczegółowe instrukcje dla agentów: [AGENTS.md](AGENTS.md).
 
-## Zaznaczanie położenia grobu
+## Galeria i nawigacja
 
-Otwórz szczegóły grobu i wybierz **Zaznacz położenie grobu**. Włącz zdjęcia lotnicze w przełączniku warstw, kliknij/dotknij właściwe miejsce, w razie potrzeby przeciągnij tymczasową pinezkę, a następnie kliknij **Kopiuj współrzędne**. Aplikacja przygotuje JSON z `cemetery`, `graveId`, `coordinates` i `precision: estimated-from-imagery`.
+Domyślny widok to galeria fotografii. Kliknięcie karty otwiera przeglądarkę zdjęć: strzałki, gest przesunięcia na telefonie i klawisze strzałek zmieniają zdjęcie. Górne przyciski przechodzą między grobami w aktualnych wynikach. Escape i Wróć zamykają grób. Adresy #grave/<id> pozwalają udostępnić konkretny grób; historia przeglądarki zachowuje nawigację.
 
-**Ważne:** publiczna aplikacja nie ma prawa zapisu na GitHubie. Kopiowanie nie aktualizuje repozytorium. Zweryfikowane współrzędne trzeba ręcznie przenieść do pola `location.coordinates` odpowiedniego grobu w `data/jablonka.json` lub `data/orawka.json` i zatwierdzić commit. Nie dodawaj tokenów GitHub do kodu strony. Punkty wybrane na ortofotomapie są orientacyjne i nie powinny być oznaczane jako pomiary GPS.
+Zakładka Mapa pokazuje mapę satelitarną z planem, a Pokaż na mapie przybliża wybrany grób. Źródła są dostępne w rozwijanej sekcji. Publiczny interfejs nie zawiera edytora współrzędnych; pozycje aktualizuje się w danych repozytorium.
