@@ -38,7 +38,7 @@ with sync_playwright() as playwright:
             page.route('https://unpkg.com/**', lambda route: route.abort())
         response = page.goto(url, wait_until='networkidle')
         assert response.status == 200, response.status
-        expect(page.locator('.grave')).to_have_count(11)
+        expect(page.locator('.grave')).to_have_count(12)
         expect(page.locator('#gallery-view')).to_be_visible()
         expect(page.locator('#map-view')).to_be_hidden()
         assert page.get_by_text('Zobacz szczegóły', exact=True).count() == 0
@@ -75,7 +75,7 @@ with sync_playwright() as playwright:
             expect(page.locator('#map')).to_contain_text('Mapa jest niedostępna')
         else:
             page.wait_for_function("map.getCenter().distanceTo(markers.get('grave-004').getLatLng()) < 1")
-            assert page.evaluate('markers.size') == 5
+            assert page.evaluate('markers.size') == 6
             expect(page.locator('#map .leaflet-image-layer')).to_be_visible()
             page.locator('#overlay-opacity').fill('40')
             assert page.evaluate('sectorOverlay.options.opacity') == 0.4

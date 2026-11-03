@@ -271,6 +271,47 @@
           "url": "https://parafiajablonka.katolicki.eu/cmentarz/4181/foto/a.11.1.(2).jpg"
         }
       ]
+    },
+    {
+      "id": "grave-006",
+      "label": "Sączek",
+      "location": {
+        "description": "Sektor A, rząd 2, grób 10 (A-2-10); katalog parafialny",
+        "sector": "A",
+        "row": "2",
+        "number": "10",
+        "coordinates": {
+          "lat": 49.48671072,
+          "lon": 19.69982216
+        },
+        "precision": "estimated-from-parish-plan",
+        "source": "https://parafiajablonka.katolicki.eu/cmentarz/4181/mapa_podklady/1-sektor%20a.jpg",
+        "planPixel": [
+          272,
+          298
+        ],
+        "coordinateNote": "Położenie odczytane z numerowanego planu parafii i przeliczone według dopasowania nakładki. Przybliżone współrzędne, bez pomiaru GPS."
+      },
+      "personIds": [
+        "jozef-saczek-1943",
+        "pawel-saczek-1900",
+        "joanna-saczek-1904"
+      ],
+      "photosPending": false,
+      "photos": [
+        "photos/grave-006/parish-1.jpg"
+      ],
+      "photoCredit": "Parafia Przemienienia Pańskiego w Jabłonce. Zdjęcie archiwalne: widoczne tablice Pawła i Joanny (pisownia SONCEK). Józef Sączek, zmarły 11.09.2025, jest wymieniony w katalogu; jego tablicy nie ma na tym zdjęciu.",
+      "sources": [
+        {
+          "label": "Katalog parafialny — wyszukaj Sączek, Józef; A-2-10",
+          "url": "https://polskie-cmentarze.info/wyszukiwarka.php?clientId=4181"
+        },
+        {
+          "label": "Zdjęcie archiwalne grobu A-2-10",
+          "url": "https://parafiajablonka.katolicki.eu/cmentarz/4181/foto/a.2.10.jpg"
+        }
+      ]
     }
   ],
   "people": [
@@ -381,6 +422,27 @@
       "birth": null,
       "death": null,
       "notes": "Siostra Stefanii Zborek z domu Pilch. Mieszkała w Kozach. Nazwisko panieńskie Pilch prawdopodobne, niepotwierdzone. Brak danych o pochówku i datach."
+    },
+    {
+      "id": "jozef-saczek-1943",
+      "name": "Józef Sączek",
+      "birth": "1943-12-23",
+      "death": "2025-09-11",
+      "dateSource": "https://polskie-cmentarze.info/wyszukiwarka.php?clientId=4181"
+    },
+    {
+      "id": "pawel-saczek-1900",
+      "name": "Paweł Sączek",
+      "birth": "1900-01-06",
+      "death": "1978-03-17",
+      "dateSource": "https://polskie-cmentarze.info/wyszukiwarka.php?clientId=4181"
+    },
+    {
+      "id": "joanna-saczek-1904",
+      "name": "Joanna Sączek",
+      "birth": "1904-09-29",
+      "death": "1981-03-03",
+      "dateSource": "https://polskie-cmentarze.info/wyszukiwarka.php?clientId=4181"
     }
   ],
   "relationships": [
@@ -549,7 +611,7 @@
     }
   ],
   "unresolved": [
-    "Pozycje wszystkich pięciu grobów oszacowano z planów parafii. Brak pomiarów GPS.",
+    "Pozycje wszystkich grobów oszacowano z planów parafii. Brak pomiarów GPS.",
     "Daty życia i miejsca pochówku Józefa Pilcha (Jurgów) oraz Małgorzaty Środy (Kozy) nieustalone."
   ],
   "provenance": "Zdjęcia nagrobków i relacje podane przez użytkownika w rozmowie 2026-11-01. Zdjęcia nie zostały jeszcze przesłane do repozytorium. Aktualizacja 2026-11-02: dodano dwa zdjęcia grobu 003 oraz zdjęcie planu cmentarza; daty Andrzeja Pilcha seniora odczytane ze zbliżenia inskrypcji. Współrzędnych nadrukowanych na zdjęciach nie użyto do lokalizacji."

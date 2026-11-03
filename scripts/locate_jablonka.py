@@ -11,6 +11,7 @@ points = {
     'grave-002': ('L', '12', '10', [819, 799]),
     'grave-003': ('H', '10', '18', [407, 493]),
     'grave-004': ('H', '7', '23', [294, 474]),
+    'grave-006': ('A', '2', '10', [272, 298]),
     'grave-005': ('A', '11', '1', [658, 78]),
 }
 
@@ -42,6 +43,6 @@ for grave in data['graves']:
     })
     if grave['id'] in ('grave-004', 'grave-005'):
         location['description'] = f'Sektor {sector}, rząd {row}, grób {number} ({sector}-{row}-{number}); katalog parafialny'
-data['unresolved'][0] = 'Pozycje wszystkich pięciu grobów oszacowano z planów parafii. Brak pomiarów GPS.'
+data['unresolved'][0] = 'Pozycje wszystkich grobów oszacowano z planów parafii. Brak pomiarów GPS.'
 path.write_text(json.dumps(data, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
-print('Located all five Jablonka graves from parish plans.')
+print('Located all Jablonka graves from parish plans.')

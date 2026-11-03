@@ -3,7 +3,7 @@
 Publiczny katalog grobów z mapą OpenStreetMap. Prywatne relacje rodzinne przechowywane są osobno w repozytorium `marcinpz/rodzina-genealogia`.
 
 ## Status
-Statyczna aplikacja obejmuje 11 grobów: pięć w Jabłonce i sześć w Orawce, filtr cmentarza, wyszukiwarkę i karty nagrobków.
+Statyczna aplikacja obejmuje 12 grobów: sześć w Jabłonce i sześć w Orawce, filtr cmentarza, wyszukiwarkę i karty nagrobków.
 Adres docelowy: https://marcinpz.github.io/mapa-grobow/.
 Strona jest publikowana przez GitHub Actions do GitHub Pages.
 
@@ -11,11 +11,11 @@ Strona jest publikowana przez GitHub Actions do GitHub Pages.
 - [Dane z Orawki](data/orawka.json)
 - [Plan MVP](docs/MVP.md)
 
-Wszystkie pięć grobów w Jabłonce ma zdjęcia: łącznie 10 fotografii, w tym osiem z katalogu parafii i dwa zdjęcia użytkownika. Miniatury widać na liście, pełne zdjęcia i źródła w szczegółach. Zdjęcia Orawki czekają na import. Daty niepewne oznaczono do weryfikacji.
+Wszystkie sześć grobów w Jabłonce ma zdjęcia: łącznie 11 fotografii, w tym dziewięć z katalogu parafii i dwa zdjęcia użytkownika. Miniatury widać na liście, pełne zdjęcia i źródła w szczegółach. Zdjęcia Orawki czekają na import. Daty niepewne oznaczono do weryfikacji.
 
 Fotografie z rozmowy przygotowano w osobnym archiwum ZIP, ale nie zostały jeszcze zaimportowane do repozytorium.
 Groby bez zaimportowanych zdjęć mają pustą tablicę photos i photosPending: true. Dokładne współrzędne
-grobów nie pochodzą z pomiaru GPS. Wszystkie pięć grobów Jabłonki ma znaczniki oszacowane z numerowanych planów parafii: L-12-9, L-12-10, H-10-18, H-7-23 i A-11-1. Sześć grobów Orawki nadal wymaga ustalenia pozycji; mapa wskazuje tam tylko cmentarz.
+grobów nie pochodzą z pomiaru GPS. Wszystkie sześć grobów Jabłonki ma znaczniki oszacowane z numerowanych planów parafii: L-12-9, L-12-10, H-10-18, H-7-23, A-11-1 i A-2-10. Sześć grobów Orawki nadal wymaga ustalenia pozycji; mapa wskazuje tam tylko cmentarz.
 
 Pozycje Jabłonki odtwarza `python scripts/locate_jablonka.py`: środki grobów na oryginalnych obrazach sektorów są przeliczane macierzami z `docs/overlay-alignment.json`. Rekordy zachowują źródło, piksel planu i oznaczenie przybliżonej dokładności.
 
