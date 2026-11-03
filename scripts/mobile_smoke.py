@@ -95,8 +95,11 @@ with sync_playwright() as playwright:
         expect(page.locator('.photo-stage')).to_contain_text('Zdjęcie wkrótce')
         expect(page.locator('#details')).to_contain_text('nie jest jeszcze ustalone')
         page.get_by_role('button', name='← Wróć', exact=True).click()
+        expect(page.locator('#grave-dialog')).not_to_be_visible()
+        expect(page.locator('#gallery-view')).to_be_visible()
         expect(page.locator('#cemetery-filter')).to_have_value('orawka')
         search.fill('brak-takiego-nazwiska')
+        expect(search).to_have_value('brak-takiego-nazwiska')
         expect(page.locator('.empty')).to_be_visible()
         assert not errors, errors
         print(f'PASS {width}px: gallery, photos, history, filters, map, missing photos')
